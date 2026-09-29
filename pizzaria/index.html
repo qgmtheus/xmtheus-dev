@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forno di Nonna | Pizzaria Artesanal</title>
+<meta name="description" content="Pizzaria artesanal com forno a lenha. Peça pelo WhatsApp ou venha nos visitar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #b3261e; --red-dark: #8c1d17; --cream: #fbf5ec; --brown: #3b2a20; --muted: #7a6558; --green: #25d366;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--brown); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+  a { color: inherit; text-decoration: none; }
+  .container { width: min(1100px, 100% - 32px); margin-inline: auto; }
+
+  header { position: sticky; top: 0; z-index: 10; background: rgba(251,245,236,.95); backdrop-filter: blur(6px); border-bottom: 1px solid #eadfce; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.4rem; color: var(--red); }
+  .nav ul { display: flex; gap: 28px; list-style: none; font-weight: 700; }
+  .nav ul a:hover { color: var(--red); }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.6rem; cursor: pointer; color: var(--brown); }
+
+  .btn { display: inline-block; padding: 14px 28px; border-radius: 999px; font-weight: 700; transition: transform .15s, background .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--red); color: #fff; }
+  .btn-primary:hover { background: var(--red-dark); }
+  .btn-outline { border: 2px solid #fff; color: #fff; }
+
+  .hero { min-height: 88vh; display: grid; place-items: center; text-align: center; color: #fff;
+    background-color: #3b2a20; background-image: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1600&q=80'); background-size: cover; background-position: center; }
+  .hero h1 { font-size: clamp(2.4rem, 7vw, 4.8rem); margin-bottom: 16px; }
+  .hero p { font-size: 1.2rem; max-width: 560px; margin: 0 auto 32px; opacity: .92; }
+  .hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .tag { display: inline-block; letter-spacing: 3px; text-transform: uppercase; font-size: .8rem; margin-bottom: 14px; opacity: .85; }
+
+  section { padding: 90px 0; }
+  .section-title { text-align: center; margin-bottom: 48px; }
+  .section-title h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+  .section-title p { color: var(--muted); }
+
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about img { width: 100%; border-radius: 18px; aspect-ratio: 4/3; object-fit: cover; background: #e6d8c4; }
+  .about h2 { font-size: 2.4rem; margin-bottom: 18px; }
+  .about p { color: var(--muted); margin-bottom: 14px; }
+  .stats { display: flex; gap: 36px; margin-top: 24px; }
+  .stats strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--red); }
+
+  .tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+  .tab { padding: 10px 22px; border-radius: 999px; border: 2px solid var(--red); background: none; color: var(--red); font: 700 1rem 'Lato'; cursor: pointer; }
+  .tab.active { background: var(--red); color: #fff; }
+  .menu-list { display: none; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px 48px; }
+  .menu-list.active { display: grid; }
+  .item { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px dashed #d8c7b1; }
+  .item h3 { font-size: 1.2rem; }
+  .item p { color: var(--muted); font-size: .95rem; }
+  .price { font-weight: 700; color: var(--red); white-space: nowrap; font-size: 1.1rem; }
+
+  .reviews { background: var(--brown); color: var(--cream); }
+  .reviews .section-title p { color: #cbb9a6; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .card { background: rgba(255,255,255,.06); padding: 28px; border-radius: 16px; }
+  .stars { color: #f5b642; margin-bottom: 10px; letter-spacing: 2px; }
+  .card strong { display: block; margin-top: 14px; }
+
+  .info { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; }
+  .info h3 { font-size: 1.5rem; margin: 22px 0 8px; }
+  .info h3:first-child { margin-top: 0; }
+  .info iframe { width: 100%; height: 100%; min-height: 340px; border: 0; border-radius: 18px; }
+  .hours li { display: flex; justify-content: space-between; list-style: none; padding: 6px 0; border-bottom: 1px solid #eadfce; max-width: 340px; }
+
+  footer { background: #241912; color: #cbb9a6; text-align: center; padding: 32px 16px; font-size: .9rem; }
+  footer a { color: #fff; font-weight: 700; }
+
+  .whatsapp { position: fixed; right: 20px; bottom: 20px; z-index: 20; width: 60px; height: 60px; border-radius: 50%; background: var(--green);
+    display: grid; place-items: center; box-shadow: 0 6px 20px rgba(0,0,0,.25); transition: transform .15s; }
+  .whatsapp:hover { transform: scale(1.08); }
+  .whatsapp svg { width: 32px; height: 32px; fill: #fff; }
+
+  @media (max-width: 800px) {
+    .menu-btn { display: block; }
+    .nav ul { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--cream); border-bottom: 1px solid #eadfce; }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 14px 16px; }
+    .about, .info { grid-template-columns: 1fr; }
+    .menu-list { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container nav">
+    <a href="#" class="logo">Forno di Nonna</a>
+    <button class="menu-btn" aria-label="Abrir menu">☰</button>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#avaliacoes">Avaliações</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="tag">Forno a lenha desde 1998</span>
+    <h1>A pizza da Nonna,<br>do jeito que tem que ser.</h1>
+    <p>Massa de fermentação natural por 48h, ingredientes frescos e muito amor italiano.</p>
+    <div class="actions">
+      <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20fazer%20um%20pedido" class="btn btn-primary" target="_blank">Pedir pelo WhatsApp</a>
+      <a href="#cardapio" class="btn btn-outline">Ver cardápio</a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="container about">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80" alt="Salão da pizzaria" loading="lazy">
+    <div>
+      <span class="tag" style="color:var(--red)">Nossa história</span>
+      <h2>Receita de família, passada de geração em geração</h2>
+      <p>Tudo começou na cozinha da Nonna Giulia, que trouxe da Itália a receita de massa que usamos até hoje.</p>
+      <p>Hoje somos um cantinho aconchegante no bairro, perfeito para reunir a família e os amigos.</p>
+      <div class="stats">
+        <div><strong>25+</strong>anos de história</div>
+        <div><strong>4.9★</strong>no Google</div>
+        <div><strong>30</strong>sabores</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cardapio" style="background:#f4ead9">
+  <div class="container">
+    <div class="section-title">
+      <h2>Cardápio</h2>
+      <p>Pizzas grandes com 8 fatias</p>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="salgadas">Salgadas</button>
+      <button class="tab" data-tab="doces">Doces</button>
+      <button class="tab" data-tab="bebidas">Bebidas</button>
+    </div>
+
+    <div class="menu-list active" id="salgadas">
+      <div class="item"><div><h3>Margherita</h3><p>Molho de tomate, muçarela de búfala, manjericão fresco</p></div><span class="price">R$ 54</span></div>
+      <div class="item"><div><h3>Calabresa</h3><p>Calabresa artesanal, cebola roxa, azeitonas</p></div><span class="price">R$ 52</span></div>
+      <div class="item"><div><h3>Quatro Queijos</h3><p>Muçarela, gorgonzola, parmesão e catupiry</p></div><span class="price">R$ 62</span></div>
+      <div class="item"><div><h3>Portuguesa</h3><p>Presunto, ovos, cebola, ervilha e azeitonas</p></div><span class="price">R$ 58</span></div>
+      <div class="item"><div><h3>Parma com Rúcula</h3><p>Presunto parma, rúcula, tomate seco e parmesão</p></div><span class="price">R$ 72</span></div>
+      <div class="item"><div><h3>Frango com Catupiry</h3><p>Frango desfiado temperado e catupiry original</p></div><span class="price">R$ 56</span></div>
+    </div>
+    <div class="menu-list" id="doces">
+      <div class="item"><div><h3>Chocolate com Morango</h3><p>Chocolate ao leite e morangos frescos</p></div><span class="price">R$ 49</span></div>
+      <div class="item"><div><h3>Romeu e Julieta</h3><p>Goiabada cascão e queijo minas</p></div><span class="price">R$ 45</span></div>
+      <div class="item"><div><h3>Banana com Canela</h3><p>Banana, açúcar, canela e leite condensado</p></div><span class="price">R$ 44</span></div>
+    </div>
+    <div class="menu-list" id="bebidas">
+      <div class="item"><div><h3>Refrigerante 2L</h3><p>Coca-Cola, Guaraná ou Fanta</p></div><span class="price">R$ 14</span></div>
+      <div class="item"><div><h3>Suco natural</h3><p>Laranja, limão ou maracujá (500ml)</p></div><span class="price">R$ 12</span></div>
+      <div class="item"><div><h3>Vinho da casa</h3><p>Taça de tinto ou branco</p></div><span class="price">R$ 22</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="reviews">
+  <div class="container">
+    <div class="section-title">
+      <h2>O que dizem nossos clientes</h2>
+      <p>Mais de 800 avaliações no Google</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="stars">★★★★★</div><p>"Melhor pizza da região, sem dúvida. A massa é leve e a borda é perfeita!"</p><strong>Mariana S.</strong></div>
+      <div class="card"><div class="stars">★★★★★</div><p>"Ambiente acolhedor e atendimento excelente. Virou nosso lugar de sexta-feira."</p><strong>Carlos A.</strong></div>
+      <div class="card"><div class="stars">★★★★★</div><p>"Pedi pelo WhatsApp e chegou quentinha em 35 minutos. Recomendo muito!"</p><strong>Juliana P.</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container info">
+    <div>
+      <h3>Endereço</h3>
+      <p>Rua das Oliveiras, 123 – Centro<br>São Paulo – SP</p>
+      <h3>Horário</h3>
+      <ul class="hours">
+        <li><span>Terça a Quinta</span><span>18h – 23h</span></li>
+        <li><span>Sexta e Sábado</span><span>18h – 00h</span></li>
+        <li><span>Domingo</span><span>18h – 23h</span></li>
+        <li><span>Segunda</span><span>Fechado</span></li>
+      </ul>
+      <h3>Contato</h3>
+      <p>(11) 99999-9999<br>@fornodinonna</p>
+      <br>
+      <a href="https://wa.me/5511999999999" class="btn btn-primary" target="_blank">Fazer pedido</a>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Avenida+Paulista,+São+Paulo&output=embed" loading="lazy" title="Mapa"></iframe>
+  </div>
+</section>
+
+<footer>
+  © 2026 Forno di Nonna · Todos os direitos reservados<br>
+  Site criado por <a href="../index.html">xmtheus.dev</a>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/5511999999999" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+  const btn = document.querySelector('.menu-btn');
+  const nav = document.querySelector('.nav ul');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab, .menu-list').forEach(el => el.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
