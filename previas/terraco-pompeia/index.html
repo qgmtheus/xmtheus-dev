@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Terraço Pompéia | Bar e Gastronomia</title>
+<meta name="description" content="Bar e gastronomia na Vila Anglo Brasileira, zona oeste de São Paulo. Espetinhos, pratos da casa, drinks e mesa boa pra reunir a turma.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&family=Yellowtail&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15100e; --bg-2: #1f1714; --card: #261c18; --line: #3a2b25;
+    --text: #fbf1e9; --muted: #bba89c; --orange: #ff6b2c; --pink: #e8378f; --teal: #1fb5a5; --yellow: #ffc23d; --green: #25d366;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  h1, h2, h3.display { font-family: 'Anton', sans-serif; font-weight: 400; letter-spacing: .5px; line-height: 1.02; text-transform: uppercase; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .neon { font-family: 'Yellowtail', cursive; color: #fff7ea; text-shadow: 0 0 6px rgba(255,236,200,.9), 0 0 18px rgba(255,170,90,.7), 0 0 36px rgba(255,107,44,.5); }
+  .stripe { height: 6px; background: linear-gradient(90deg, var(--orange), var(--pink), var(--teal), var(--yellow)); }
+
+  .preview-bar { background: #000; color: #d9c7bb; font-size: .8rem; text-align: center; padding: 8px 16px; }
+  .preview-bar a { color: var(--yellow); font-weight: 700; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(21,16,14,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 16px; }
+  .logo { display: flex; flex-direction: column; line-height: 1; }
+  .logo strong { font-family: 'Anton'; font-weight: 400; font-size: 1.55rem; letter-spacing: 1px; text-transform: uppercase; }
+  .logo strong span { color: var(--orange); }
+  .logo small { font-size: .68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  .nav ul { display: flex; gap: 26px; list-style: none; font-weight: 500; font-size: .95rem; }
+  .nav ul a:hover { color: var(--orange); }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.7rem; cursor: pointer; color: var(--text); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-weight: 700; transition: transform .15s, filter .15s; border: 0; cursor: pointer; font-family: inherit; font-size: 1rem; }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  .btn-orange { background: var(--orange); color: #1a0d07; }
+  .btn-line { border: 2px solid rgba(255,255,255,.6); color: #fff; }
+  .btn-sm { padding: 10px 20px; font-size: .9rem; }
+
+  .hero { position: relative; min-height: min(calc(100vh - 110px), 760px); display: grid; align-items: end; overflow: hidden; }
+  .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,16,14,.35) 0%, rgba(21,16,14,.55) 45%, rgba(21,16,14,.97) 100%); }
+  .hero .content { position: relative; z-index: 1; padding: 120px 0 64px; }
+  .hero .neon { font-size: clamp(1.9rem, 4.6vw, 3.2rem); margin-bottom: 10px; display: block; }
+  .hero h1 { font-size: clamp(3.6rem, 10vw, 7.5rem); margin-bottom: 18px; }
+  .hero h1 span { color: var(--orange); }
+  .hero p { font-size: 1.1rem; max-width: 560px; color: #eadbd0; margin-bottom: 28px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 30px; }
+  .chip { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); padding: 7px 14px; border-radius: 999px; font-size: .85rem; backdrop-filter: blur(4px); }
+  .chip.open { border-color: rgba(37,211,102,.5); }
+  .chip.open::before { content: '●'; color: var(--green); margin-right: 6px; }
+  .chip.closed::before { content: '●'; color: #ef4444; margin-right: 6px; }
+
+  section { padding: 96px 0; }
+  .title { margin-bottom: 44px; }
+  .title .neon { font-size: 1.9rem; display: block; margin-bottom: 4px; }
+  .title h2 { font-size: clamp(2.6rem, 5.5vw, 4rem); }
+  .title p { color: var(--muted); max-width: 560px; margin-top: 10px; }
+  .title.center { text-align: center; }
+  .title.center p { margin-inline: auto; }
+
+  .food { display: grid; grid-template-columns: 1.25fr 1fr 1fr; grid-template-rows: auto auto; gap: 20px; }
+  .tile { position: relative; border-radius: 22px; overflow: hidden; background: var(--card); min-height: 280px; }
+  .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .tile:hover img { transform: scale(1.04); }
+  .tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(10,6,5,.88)); }
+  .tile .label { position: absolute; left: 22px; right: 22px; bottom: 20px; z-index: 1; }
+  .tile h3 { font-size: 1.3rem; font-weight: 700; }
+  .tile p { font-size: .9rem; color: #e2d2c6; }
+  .tile.big { grid-row: span 2; min-height: 580px; }
+  .tile .tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; background: var(--orange); color: #1a0d07; }
+
+  .bar-section { background: var(--bg-2); }
+  .drinks { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 20px; align-items: stretch; }
+  .drinks .tile { min-height: 460px; }
+  .drinks .tile .tag { background: var(--pink); color: #fff; }
+  .drinks .text { display: flex; flex-direction: column; justify-content: center; padding: 8px 8px 8px 24px; }
+  .drinks .text h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .drinks .text p { color: var(--muted); margin-bottom: 14px; }
+
+  .menu-cta { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 56px 24px; }
+  .menu-cta h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 12px; }
+  .menu-cta p { color: var(--muted); max-width: 520px; margin: 0 auto 26px; }
+
+  .place { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+  .place .tile { min-height: 420px; }
+  .place .tile .tag { background: var(--teal); color: #04221f; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .facts div { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+  .facts strong { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+  .facts span { color: var(--muted); font-size: .9rem; }
+
+  .info { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; }
+  .info h3 { font-family: 'Anton'; font-weight: 400; text-transform: uppercase; font-size: 1.7rem; letter-spacing: .5px; margin-bottom: 10px; }
+  .info .block { margin-bottom: 30px; }
+  .info p { color: #e6d6ca; }
+  .hours { list-style: none; max-width: 380px; }
+  .hours li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); color: #e6d6ca; }
+  .hours li.today { color: var(--orange); font-weight: 700; }
+  .info iframe { width: 100%; height: 100%; min-height: 380px; border: 0; border-radius: 22px; filter: grayscale(.2) contrast(1.05); }
+
+  .cta { text-align: center; padding: 100px 0; position: relative; overflow: hidden; }
+  .cta .neon { font-size: clamp(2.2rem, 6vw, 4rem); display: block; margin-bottom: 18px; }
+  .cta p { color: var(--muted); margin-bottom: 30px; }
+
+  footer { background: #0c0908; color: #a8958a; text-align: center; padding: 32px 16px; font-size: .85rem; }
+  footer a { color: var(--yellow); font-weight: 700; }
+
+  .whatsapp { position: fixed; right: 20px; bottom: 20px; z-index: 30; width: 60px; height: 60px; border-radius: 50%; background: var(--green); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.4); transition: transform .15s; }
+  .whatsapp:hover { transform: scale(1.08); }
+  .whatsapp svg { width: 32px; height: 32px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    .nav ul { display: none; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 14px 16px; }
+    .nav .btn { display: none; }
+    .food { grid-template-columns: 1fr 1fr; }
+    .tile.big { grid-column: span 2; grid-row: auto; min-height: 380px; }
+    .drinks { grid-template-columns: 1fr 1fr; }
+    .drinks .text { grid-column: span 2; grid-row: 1; padding: 0 0 8px; }
+    .drinks .tile { min-height: 340px; }
+    .place, .info { grid-template-columns: 1fr; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 560px) {
+    .food, .drinks { grid-template-columns: 1fr; }
+    .tile.big, .drinks .text { grid-column: auto; }
+    .tile { min-height: 300px; }
+    .facts { grid-template-columns: 1fr; }
+    .hero .content { padding-top: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">Prévia criada para o Terraço Pompéia por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>. Este ainda não é o site oficial do restaurante.</div>
+
+<header>
+  <nav class="container nav">
+    <a href="#" class="logo"><strong>Terraço <span>Pompéia</span></strong><small>Bar e Gastronomia</small></a>
+    <button class="menu-btn" aria-label="Abrir menu">☰</button>
+    <ul>
+      <li><a href="#cozinha">Cozinha</a></li>
+      <li><a href="#bar">Bar</a></li>
+      <li><a href="#espaco">O espaço</a></li>
+      <li><a href="#contato">Horários e endereço</a></li>
+    </ul>
+    <a class="btn btn-orange btn-sm wa-reserva" href="#" target="_blank">Reservar mesa</a>
+  </nav>
+</header>
+<div class="stripe"></div>
+
+<section class="hero" style="padding:0">
+  <img src="img/bar.jpg" alt="Balcão do bar iluminado, com garrafas e taças">
+  <div class="container content">
+    <span class="neon">a melhor rede social ainda é uma mesa</span>
+    <h1>Terraço<br><span>Pompéia</span></h1>
+    <p>Bar e gastronomia na zona oeste de São Paulo: espetinhos, pratos da casa, drinks autorais e aquela mesa boa pra reunir a turma.</p>
+    <div class="actions">
+      <a class="btn btn-orange wa-reserva" href="#" target="_blank">Reservar pelo WhatsApp</a>
+      <a class="btn btn-line" href="#cozinha">Ver destaques</a>
+    </div>
+    <div class="chips">
+      <span class="chip" id="status">Horário</span>
+      <span class="chip">Refeição no local · Para viagem · Entrega</span>
+      <span class="chip">🏳️‍🌈 Acolhe a comunidade LGBTQ+</span>
+    </div>
+  </div>
+</section>
+
+<section id="cozinha">
+  <div class="container">
+    <div class="title">
+      <span class="neon">da cozinha</span>
+      <h2>Pra dividir ou pra<br>não dividir com ninguém</h2>
+      <p>Cozinha brasileira com cara de boteco caprichado, do petisco à sobremesa.</p>
+    </div>
+    <div class="food">
+      <article class="tile big">
+        <img src="img/espetinhos.jpg" alt="Espetinhos de carne, coração, linguiça e queijo coalho com vinagrete e farofa" loading="lazy">
+        <div class="label"><span class="tag">Pra dividir</span><h3>Espetinhos na brasa</h3><p>Carne, coração, linguiça e queijo coalho, com vinagrete, farofa e molho da casa.</p></div>
+      </article>
+      <article class="tile">
+        <img src="img/arroz.jpg" alt="Arroz da casa com pedaços de carne e coentro" loading="lazy">
+        <div class="label"><h3>Arroz da casa</h3><p>Temperado, suculento e servido no capricho.</p></div>
+      </article>
+      <article class="tile">
+        <img src="img/picanha.jpg" alt="Corte de carne grelhado com chimichurri" loading="lazy">
+        <div class="label"><h3>Carne na brasa</h3><p>Corte grelhado no ponto, com chimichurri.</p></div>
+      </article>
+      <article class="tile" style="grid-column: span 2">
+        <img src="img/petit-gateau.jpg" alt="Petit gâteau com sorvete de creme e calda de chocolate" loading="lazy" style="object-position:center 40%">
+        <div class="label"><span class="tag">Sobremesa</span><h3>Petit gâteau</h3><p>Bolinho quente de chocolate com sorvete de creme e calda.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="bar" class="bar-section">
+  <div class="container drinks">
+    <article class="tile">
+      <img src="img/caipirinha.jpg" alt="Caipirinha de frutas com manjericão, com grafite ao fundo" loading="lazy">
+      <div class="label"><span class="tag">Caipirinhas</span><h3>Frutas e ervas</h3></div>
+    </article>
+    <article class="tile">
+      <img src="img/drink.jpg" alt="Drink vermelho de frutas com hortelã" loading="lazy">
+      <div class="label"><span class="tag">Autorais</span><h3>Drinks da casa</h3></div>
+    </article>
+    <div class="text">
+      <span class="neon" style="font-size:1.9rem">do bar</span>
+      <h2>Brinde com a gente</h2>
+      <p>Caipirinhas de frutas, drinks autorais, cervejas geladas e uma boa carta de vinhos no balcão mais bonito da região.</p>
+      <p>Chega pro happy hour e fica até o fim da noite.</p>
+      <div><a class="btn btn-orange wa-reserva" href="#" target="_blank">Reservar mesa</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="menu-cta">
+      <span class="neon" style="font-size:1.9rem;display:block;margin-bottom:6px">cardápio</span>
+      <h2>Bateu a fome?</h2>
+      <p>Chama a gente no WhatsApp e receba o cardápio completo, com petiscos, pratos, drinks e sobremesas.</p>
+      <a class="btn btn-orange wa-cardapio" href="#" target="_blank">Pedir o cardápio</a>
+    </div>
+  </div>
+</section>
+
+<section id="espaco">
+  <div class="container">
+    <div class="title">
+      <span class="neon">o espaço</span>
+      <h2>Arte na parede,<br>gente boa na mesa</h2>
+    </div>
+    <div class="place">
+      <article class="tile">
+        <img src="img/bar.jpg" alt="Balcão com garrafas iluminadas e frase em neon" loading="lazy">
+        <div class="label"><span class="tag">Balcão</span><h3>O coração da casa</h3><p>Garrafas iluminadas, neon e bartender caprichando no seu drink.</p></div>
+      </article>
+      <article class="tile">
+        <img src="img/fachada.jpg" alt="Fachada de esquina com grafite colorido e mesas na calçada" loading="lazy" style="object-position:center 30%">
+        <div class="label"><span class="tag">Na esquina</span><h3>Mesas ao ar livre</h3><p>Fachada grafitada, mesas na calçada e terraço coberto.</p></div>
+      </article>
+    </div>
+    <div class="facts">
+      <div><strong>🍽️ Almoço e jantar</strong><span>Aberto a partir do meio-dia, de terça a domingo.</span></div>
+      <div><strong>🎉 Aniversários e grupos</strong><span>Reserve pelo WhatsApp e a gente prepara sua mesa.</span></div>
+      <div><strong>🛵 Também em casa</strong><span>Pedidos para viagem e entrega.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="bar-section">
+  <div class="container info">
+    <div>
+      <div class="block">
+        <h3>Endereço</h3>
+        <p>R. Ribeiro de Barros, 178<br>Vila Anglo Brasileira, São Paulo, SP</p>
+      </div>
+      <div class="block">
+        <h3>Horários</h3>
+        <ul class="hours" id="hours"></ul>
+      </div>
+      <div class="block">
+        <h3>Reservas e pedidos</h3>
+        <p style="margin-bottom:16px">(11) 98909-7289 · WhatsApp</p>
+        <a class="btn btn-orange wa-reserva" href="#" target="_blank">Falar no WhatsApp</a>
+      </div>
+    </div>
+    <iframe src="https://www.google.com/maps?q=R.+Ribeiro+de+Barros,+178+-+Vila+Anglo+Brasileira,+S%C3%A3o+Paulo&output=embed" loading="lazy" title="Mapa do Terraço Pompéia"></iframe>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <span class="neon">a melhor rede social ainda é uma mesa</span>
+    <p>Junta a turma e vem. A gente guarda o lugar.</p>
+    <a class="btn btn-orange wa-reserva" href="#" target="_blank">Reservar agora</a>
+  </div>
+</section>
+
+<div class="stripe"></div>
+<footer>
+  © 2026 Terraço Pompéia · Bar e Gastronomia · Vila Anglo Brasileira, São Paulo<br>
+  Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
+</footer>
+
+<a class="whatsapp wa-reserva" href="#" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+const WHATSAPP = '5511989097289';
+const waLink = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+document.querySelectorAll('.wa-reserva').forEach(a => a.href = waLink('Olá! Vi o site e gostaria de reservar uma mesa.'));
+document.querySelectorAll('.wa-cardapio').forEach(a => a.href = waLink('Olá! Vi o site e gostaria de receber o cardápio.'));
+
+// [dia da semana (0 = domingo), rótulo, abre, fecha] — horário em minutos desde a meia-noite
+const HORARIOS = [
+  [1, 'Segunda', null, null],
+  [2, 'Terça', 720, 1380],
+  [3, 'Quarta', 720, 1380],
+  [4, 'Quinta', 720, 1380],
+  [5, 'Sexta', 720, 1410],
+  [6, 'Sábado', 720, 1410],
+  [0, 'Domingo', 720, 1200]
+];
+const fmt = m => `${Math.floor(m / 60)}h${m % 60 ? String(m % 60).padStart(2, '0') : ''}`;
+
+const now = new Date();
+const today = now.getDay();
+const minutes = now.getHours() * 60 + now.getMinutes();
+
+document.getElementById('hours').innerHTML = HORARIOS.map(([d, dia, abre, fecha]) =>
+  `<li class="${d === today ? 'today' : ''}"><span>${dia}</span><span>${abre === null ? 'Fechado' : `${fmt(abre)} às ${fmt(fecha)}`}</span></li>`).join('');
+
+const hoursOf = d => HORARIOS.find(h => h[0] === d);
+const [, , abre, fecha] = hoursOf(today);
+const status = document.getElementById('status');
+if (abre !== null && minutes >= abre && minutes < fecha) {
+  status.textContent = `Aberto agora · fecha às ${fmt(fecha)}`;
+  status.classList.add('open');
+} else {
+  let next;
+  if (abre !== null && minutes < abre) {
+    next = `abre hoje às ${fmt(abre)}`;
+  } else {
+    // procura o próximo dia com horário de abertura
+    for (let i = 1; i <= 7; i++) {
+      const [, dia, a] = hoursOf((today + i) % 7);
+      if (a !== null) { next = `abre ${i === 1 ? 'amanhã' : dia.toLowerCase()} às ${fmt(a)}`; break; }
+    }
+  }
+  status.textContent = `Fechado agora · ${next}`;
+  status.classList.add('closed');
+}
+
+const menuBtn = document.querySelector('.menu-btn');
+const navList = document.querySelector('.nav ul');
+menuBtn.addEventListener('click', () => navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+</script>
+</body>
+</html>
