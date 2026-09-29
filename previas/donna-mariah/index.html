@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Donna Mariah | Bar & Restaurante</title>
+<meta name="description" content="Bar e restaurante na Vila Leopoldina: comida caseira, pratos prime, churrascada na chama aberta, feijoada aos fins de semana e caipirinhas com nome de rua do bairro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Mulish:wght@400;600;700;800&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #9d1f1f; --red-dark: #761515; --linen: #f1e7d6; --linen-2: #e8dbc4; --paper: #fbf6ee;
+    --ink: #2a1a14; --muted: #6e5b4f; --line: #dccdb4; --gold: #e2a23b; --green: #25d366;
+    --weave: repeating-linear-gradient(0deg, rgba(120,90,50,.05) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, rgba(120,90,50,.05) 0 1px, transparent 1px 3px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Mulish', sans-serif; background: var(--linen); background-image: var(--weave); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3.f { font-family: 'Fredoka', sans-serif; font-weight: 700; line-height: 1.05; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .script { font-family: 'Parisienne', cursive; font-weight: 400; }
+  .kicker { display: inline-block; font-size: .76rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+
+  .preview-bar { background: var(--ink); color: #e3d6c3; font-size: .8rem; text-align: center; padding: 8px 16px; }
+  .preview-bar a { color: var(--gold); font-weight: 800; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(241,231,214,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 16px; }
+  .logo { line-height: 1; }
+  .logo strong { display: block; font-family: 'Parisienne'; font-weight: 400; font-size: 2.2rem; color: var(--ink); }
+  .logo span { display: block; font-weight: 800; font-size: .66rem; letter-spacing: 3px; text-transform: uppercase; color: var(--red); text-align: right; margin-top: -4px; }
+  .nav ul { display: flex; gap: 24px; list-style: none; font-weight: 800; font-size: .92rem; }
+  .nav ul a:hover { color: var(--red); }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.7rem; cursor: pointer; color: var(--ink); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 10px; font-weight: 800; transition: transform .15s, background .15s; border: 0; cursor: pointer; font-family: inherit; font-size: .98rem; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { background: var(--red-dark); }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-line { border: 2px solid rgba(255,255,255,.7); color: #fff; }
+  .btn-sm { padding: 10px 18px; font-size: .9rem; }
+
+  .hero { position: relative; min-height: min(calc(100vh - 110px), 720px); display: grid; align-items: end; overflow: hidden; color: #fff; }
+  .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,6,.25) 0%, rgba(20,10,6,.55) 45%, rgba(20,10,6,.93) 100%); }
+  .hero .content { position: relative; z-index: 1; padding: 120px 0 60px; }
+  .hero .script { font-size: clamp(3.6rem, 10vw, 7rem); line-height: 1; display: block; }
+  .hero .sub { font-weight: 800; letter-spacing: 5px; text-transform: uppercase; font-size: .9rem; color: var(--gold); margin: 4px 0 18px; display: block; }
+  .hero p { font-size: 1.1rem; max-width: 560px; color: #efe3d3; margin-bottom: 26px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .chip { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); padding: 7px 14px; border-radius: 999px; font-size: .86rem; font-weight: 700; backdrop-filter: blur(4px); }
+  .chip.status::before { content: '●'; margin-right: 6px; color: #ef4444; }
+  .chip.status.open::before { color: var(--green); }
+
+  section { padding: 84px 0; }
+  .title { text-align: center; margin-bottom: 40px; }
+  .title h2 { font-size: clamp(2.2rem, 4.8vw, 3.3rem); color: var(--red); }
+  .title p { color: var(--muted); max-width: 580px; margin: 10px auto 0; }
+
+  .feijoada { background: var(--red); color: #fff; background-image: var(--weave); }
+  .feijoada-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .feijoada .kicker { color: var(--gold); }
+  .feijoada h2 { font-size: clamp(2.4rem, 5vw, 3.5rem); margin-bottom: 10px; }
+  .feijoada .when { display: inline-block; background: #fff; color: var(--red); font-weight: 800; padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
+  .feijoada p { color: #f4dcd6; margin-bottom: 18px; }
+  .feijoada ul { list-style: none; margin-bottom: 24px; }
+  .feijoada li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,.3); font-weight: 700; }
+  .feijoada li span:last-child { color: var(--gold); }
+  .feijoada-card { background: var(--paper); color: var(--ink); border-radius: 20px; padding: 28px; box-shadow: 0 20px 40px rgba(0,0,0,.25); transform: rotate(1.5deg); }
+  .feijoada-card h3 { font-family: 'Fredoka'; font-size: 1.5rem; color: var(--red); margin-bottom: 12px; }
+  .feijoada-card li { display: block; list-style: none; padding: 6px 0; border-bottom: 1px dotted var(--line); font-weight: 600; }
+  .feijoada-card li::before { content: '✓'; color: var(--red); font-weight: 800; margin-right: 10px; }
+
+  .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .dish { background: var(--paper); border-radius: 18px; overflow: hidden; border: 1px solid var(--line); transition: transform .2s, box-shadow .2s; }
+  .dish:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(42,26,20,.14); }
+  .dish img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .dish .body { padding: 16px 20px 20px; }
+  .dish .head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .dish h3 { font-size: 1.05rem; }
+  .dish .price { color: var(--red); font-weight: 800; white-space: nowrap; }
+  .dish p { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+  .dish .tag { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 2px; }
+
+  .churras { background: var(--ink); color: #fff; }
+  .churras .title h2 { color: #fff; }
+  .churras .title p { color: #cdbfae; }
+  .churras .kicker { color: var(--gold); }
+  .churras-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .churra { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 24px 22px; }
+  .churra h3 { font-family: 'Fredoka'; font-size: 1.35rem; }
+  .churra .price { color: var(--gold); font-weight: 800; font-size: 1.2rem; margin: 4px 0 8px; }
+  .churra p { color: #cdbfae; font-size: .9rem; }
+  .churras-note { text-align: center; color: #cdbfae; margin-top: 22px; font-size: .92rem; }
+
+  .menu { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 26px; justify-content: center; flex-wrap: wrap; }
+  .tab { flex: 0 0 auto; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--red); background: none; color: var(--red); font: 800 .86rem 'Mulish'; cursor: pointer; }
+  .tab.active { background: var(--red); color: #fff; }
+  .menu-note { text-align: center; color: var(--muted); font-size: .9rem; margin-bottom: 12px; min-height: 1em; }
+  .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+  .item { display: flex; justify-content: space-between; gap: 18px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+  .item h3 { font-size: .98rem; font-weight: 800; }
+  .item p { color: var(--muted); font-size: .86rem; margin-top: 2px; }
+  .item .price { font-weight: 800; color: var(--red); white-space: nowrap; text-align: right; }
+
+  .streets { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+  .streets img { border-radius: 20px; width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+  .streets h2 { font-size: clamp(2.2rem, 4.6vw, 3.2rem); color: var(--red); margin-bottom: 14px; }
+  .streets p { color: var(--muted); margin-bottom: 14px; }
+  .signs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 22px; }
+  .sign { background: #1f5e3a; color: #fff; border: 2px solid #fff; outline: 2px solid #1f5e3a; border-radius: 6px; padding: 8px 10px; font-weight: 800; font-size: .82rem; text-align: center; line-height: 1.2; }
+  .sign small { display: block; font-weight: 600; font-size: .68rem; opacity: .85; margin-top: 2px; }
+
+  .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+  .about h2 { font-size: clamp(2.2rem, 4.6vw, 3.2rem); color: var(--red); margin-bottom: 14px; }
+  .about p { color: var(--muted); margin-bottom: 12px; }
+  .about blockquote { font-family: 'Parisienne'; font-size: 2rem; color: var(--ink); margin: 18px 0; line-height: 1.2; }
+  .about img { border-radius: 20px; width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+  .info-wrap { background: var(--linen-2); background-image: var(--weave); }
+  .info { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; }
+  .info h3 { font-family: 'Fredoka'; font-size: 1.6rem; color: var(--red); margin-bottom: 8px; }
+  .info .block { margin-bottom: 26px; }
+  .hours { list-style: none; max-width: 380px; }
+  .hours li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .hours li.today { color: var(--red); font-weight: 800; }
+  .info iframe { width: 100%; height: 100%; min-height: 400px; border: 0; border-radius: 20px; }
+
+  .cta { text-align: center; padding: 90px 0; }
+  .cta .script { font-size: clamp(2.6rem, 6vw, 4rem); color: var(--red); display: block; }
+  .cta h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--ink); margin-bottom: 12px; }
+  .cta p { color: var(--muted); margin-bottom: 26px; }
+
+  footer { background: var(--ink); color: #cdbfae; text-align: center; padding: 32px 16px; font-size: .85rem; }
+  footer a { color: var(--gold); font-weight: 800; }
+
+  .whatsapp { position: fixed; right: 20px; bottom: 20px; z-index: 30; width: 60px; height: 60px; border-radius: 50%; background: var(--green); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); transition: transform .15s; }
+  .whatsapp:hover { transform: scale(1.08); }
+  .whatsapp svg { width: 32px; height: 32px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    .nav ul { display: none; position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--linen); border-bottom: 1px solid var(--line); }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 14px 16px; }
+    .nav .btn { display: none; }
+    .feijoada-grid, .streets, .about, .info { grid-template-columns: 1fr; gap: 36px; }
+    .dishes, .churras-grid { grid-template-columns: 1fr 1fr; }
+    .menu-list { grid-template-columns: 1fr; }
+    .tabs { justify-content: flex-start; flex-wrap: nowrap; }
+    .streets img { aspect-ratio: 4/3; }
+    section { padding: 66px 0; }
+  }
+  @media (max-width: 560px) {
+    .dishes, .churras-grid { grid-template-columns: 1fr; }
+    .signs { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">Prévia criada para o Donna Mariah por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>. Este ainda não é o site oficial do restaurante.</div>
+
+<header>
+  <nav class="container nav">
+    <a href="#" class="logo"><strong>Donna Mariah</strong><span>Bar & Restaurante</span></a>
+    <button class="menu-btn" aria-label="Abrir menu">☰</button>
+    <ul>
+      <li><a href="#feijoada">Feijoada</a></li>
+      <li><a href="#churrascada">Churrascada</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#caipirinhas">Caipirinhas</a></li>
+      <li><a href="#contato">Horários</a></li>
+    </ul>
+    <a class="btn btn-red btn-sm wa" href="#" target="_blank">Reservar mesa</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:0">
+  <img src="img/fachada.jpg" alt="Fachada do Donna Mariah à noite, na esquina, com mesas na calçada e luzes">
+  <div class="container content">
+    <span class="script">Donna Mariah</span>
+    <span class="sub">Bar & Restaurante · Vila Leopoldina</span>
+    <p>Comida caseira, pratos prime, churrascada na chama aberta e drinks, num ambiente descontraído e familiar. Mais que um restaurante: um lugar pra se sentir em casa.</p>
+    <div class="actions">
+      <a class="btn btn-gold wa" href="#" target="_blank">Reservar pelo WhatsApp</a>
+      <a class="btn btn-line" href="#cardapio">Ver cardápio</a>
+    </div>
+    <div class="chips">
+      <span class="chip status" id="status">Horário</span>
+      <span class="chip">R$ 60 a 80 por pessoa</span>
+      <span class="chip">Feijoada sábado, domingo e feriado</span>
+    </div>
+  </div>
+</section>
+
+<section id="feijoada" class="feijoada">
+  <div class="container feijoada-grid">
+    <div>
+      <span class="kicker">Fim de semana</span>
+      <h2>Feijoada especial</h2>
+      <span class="when">Sábados, domingos e feriados · até as 17h</span>
+      <p>Feijoada completa, do jeito que tem que ser, pra reunir a família no almoço de fim de semana.</p>
+      <ul>
+        <li><span>Individual</span><span>R$ 65,90</span></li>
+        <li><span>Para 2 pessoas</span><span>R$ 124,90</span></li>
+        <li><span>Para 3 pessoas</span><span>R$ 177,90</span></li>
+        <li><span>Guarnição extra</span><span>R$ 44,90</span></li>
+      </ul>
+      <a class="btn btn-gold wa" href="#" target="_blank">Reservar pra feijoada</a>
+    </div>
+    <div class="feijoada-card">
+      <h3>Acompanha</h3>
+      <ul>
+        <li>Arroz branco</li><li>Bisteca</li><li>Couve refogada</li><li>Torresminho</li>
+        <li>Banana empanada</li><li>Farofa</li><li>Vinagrete</li><li>Molho picante</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Os mais pedidos</span>
+      <h2>Comida caseira, no capricho</h2>
+    </div>
+    <div class="dishes">
+      <article class="dish"><img src="img/picanha.jpg" alt="Picanha fatiada na chapa com alho e cebolinha" loading="lazy"><div class="body"><span class="tag">Porções</span><div class="head"><h3>Picanha no rechaud</h3><span class="price">R$ 179,90</span></div><p>Com batatas fritas, farofa e vinagrete.</p></div></article>
+      <article class="dish"><img src="img/torresmo.jpg" alt="Torresmo de rolo com geleia de goiabada e limão" loading="lazy"><div class="body"><span class="tag">Experimente!</span><div class="head"><h3>Torresmo de rolo</h3><span class="price">R$ 42,90</span></div><p>Crocante por fora, macio por dentro, com geleia de goiabada.</p></div></article>
+      <article class="dish"><img src="img/frango-prato.jpg" alt="Filé de frango grelhado com arroz, feijão, farofa, fritas e vinagrete" loading="lazy"><div class="body"><span class="tag">Primes</span><div class="head"><h3>Filé de frango grelhado</h3><span class="price">R$ 47,90</span></div><p>Com arroz, feijão, fritas, farofa e vinagrete. Para 2: R$ 86,90.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="churrascada" class="churras">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Churrascada Mariah</span>
+      <h2>Cortes grelhados na chama aberta</h2>
+      <p>Tábuas pra dividir, servidas direto da brasa.</p>
+    </div>
+    <div class="churras-grid">
+      <article class="churra"><h3>Churras Picanha</h3><div class="price">R$ 199,90</div><p>Picanha, tulipa de frango, linguiça toscana, queijo coalho e pão de alho.</p></article>
+      <article class="churra"><h3>Churras Mignon</h3><div class="price">R$ 189,90</div><p>Filé mignon, coração de frango, abobrinha com parmesão e queijo coalho.</p></article>
+      <article class="churra"><h3>Churras Fraldinha</h3><div class="price">R$ 169,90</div><p>Fraldinha, queijo coalho e legumes grelhados.</p></article>
+      <article class="churra"><h3>Churras Contra</h3><div class="price">R$ 159,90</div><p>Contrafilé, filé de frango e linguiça toscana.</p></article>
+    </div>
+    <p class="churras-note">Também tem espetinhos na parrilla, a partir de R$ 9,90.</p>
+  </div>
+</section>
+
+<section id="cardapio" class="menu">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Cardápio completo</span>
+      <h2>Pra todo gosto</h2>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <p class="menu-note" id="menu-note"></p>
+    <div class="menu-list" id="menu"></div>
+  </div>
+</section>
+
+<section id="caipirinhas">
+  <div class="container streets">
+    <img src="img/suco.jpg" alt="Jarra e copo de suco verde na varanda" loading="lazy">
+    <div>
+      <span class="kicker">Caipirinhas especiais Mariah</span>
+      <h2>Cada caipirinha tem nome de rua do bairro</h2>
+      <p>As especiais da casa levam o nome das ruas da Vila Leopoldina. Com cachaça ou vodka, R$ 34,90. Com Absolut, saquê ou cachaça especial, mais R$ 5.</p>
+      <div class="signs">
+        <div class="sign">R. Columbus<small>tangerina e gengibre</small></div>
+        <div class="sign">R. Trípoli<small>maracujá, tangerina e pimenta</small></div>
+        <div class="sign">Av. Imperatriz<small>frutas vermelhas e maracujá</small></div>
+        <div class="sign">R. Guaipá<small>abacaxi, coco e rapadura</small></div>
+        <div class="sign">R. Barão da Passagem<small>limão, caju e siciliano</small></div>
+        <div class="sign">R. Carlos Weber<small>tahiti, siciliano e rosa</small></div>
+      </div>
+      <p>E mais: Passo da Pátria, Mofarrej e Lady Cris. Também tem gin tônica da casa, batidas e drinks clássicos.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container about">
+    <div>
+      <span class="kicker">Nossa história</span>
+      <h2>Um nome cheio de afeto</h2>
+      <p>O Donna Mariah foi fundado em 2020 e leva no nome uma homenagem à neta dos proprietários. É daí que vem o jeito da casa: acolhedor, familiar e com atendimento atencioso.</p>
+      <blockquote>“Mais que um restaurante, um espaço pra celebrar bons momentos e se sentir em casa.”</blockquote>
+      <a class="btn btn-red wa" href="#" target="_blank">Reservar mesa</a>
+    </div>
+    <img src="img/frango.jpg" alt="Mesa servida com frango grelhado, arroz, feijão, fritas e farofa" loading="lazy">
+  </div>
+</section>
+
+<section id="contato" class="info-wrap">
+  <div class="container info">
+    <div>
+      <div class="block">
+        <h3>Endereço</h3>
+        <p>Rua Columbus, 238<br>Vila Leopoldina, São Paulo, SP</p>
+      </div>
+      <div class="block">
+        <h3>Horários</h3>
+        <ul class="hours" id="hours"></ul>
+      </div>
+      <div class="block">
+        <h3>Reservas</h3>
+        <p style="margin-bottom:6px">WhatsApp (11) 91111-4500 · Telefone (11) 2359-7326</p>
+        <p style="margin-bottom:16px">Instagram @donnamariahbar</p>
+        <a class="btn btn-red wa" href="#" target="_blank">Falar no WhatsApp</a>
+      </div>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Rua+Columbus,+238+-+Vila+Leopoldina,+S%C3%A3o+Paulo&output=embed" loading="lazy" title="Mapa do Donna Mariah"></iframe>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <span class="script">te esperamos!</span>
+    <h2>Tem sempre uma mesa pra você</h2>
+    <p>Almoço durante a semana, happy hour de quinta a sábado e feijoada no fim de semana.</p>
+    <a class="btn btn-red wa" href="#" target="_blank">Reservar pelo WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Donna Mariah Bar & Restaurante · Vila Leopoldina, São Paulo<br>
+  Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
+</footer>
+
+<a class="whatsapp wa" href="#" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+// Celular informado no cardápio da casa. Confirmar que tem WhatsApp antes de enviar a prévia.
+const WHATSAPP = '5511911114500';
+document.querySelectorAll('.wa').forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Vi o site e gostaria de reservar uma mesa.')}`);
+
+const brl = v => typeof v === 'number' ? 'R$ ' + v.toFixed(2).replace('.', ',') : v;
+const duo = (a, b) => `${brl(a)} · 2 pessoas ${brl(b)}`;
+const meia = (a, b) => `meia ${brl(a)} · inteira ${brl(b)}`;
+
+const CARDAPIO = {
+  'Primes': { nota: 'Grelhados com arroz, feijão, batatas fritas, farofa e vinagrete. Preço individual e para 2 pessoas.', itens: [
+    ['Filé mignon', '', duo(74.9, 134.9)], ['Picanha', '', duo(74.9, 134.9)], ['Fraldinha', '', duo(67.9, 121.9)],
+    ['Contrafilé', '', duo(67.9, 121.9)], ['Filé de peixe', '', duo(59.9, 107.9)], ['Filé de frango', '', duo(47.9, 86.9)],
+    ['Escondidinho de carne seca', 'Com arroz e batatas fritas', duo(59.9, 107.9)],
+    ['Filé de peixe empanado ao molho de camarão', 'Arroz à grega e purê de batatas', duo(65.9, 118.9)],
+    ['Filé mignon com requeijão cremoso', 'Arroz branco e batatas fritas', duo(76.9, 138.9)]
+  ]},
+  'Milanesas e parmegianas': { nota: 'Milanesas com arroz, feijão e purê. Parmegianas com arroz e fritas.', itens: [
+    ['Milanesa de filé mignon', '', duo(72.9, 131.9)], ['Milanesa de contrafilé', '', duo(65.9, 117.9)],
+    ['Milanesa de peixe', '', duo(57.9, 104.9)], ['Milanesa de frango', '', duo(45.9, 82.9)],
+    ['Parmegiana de filé mignon', '', duo(77.9, 139.9)], ['Parmegiana de contrafilé', '', duo(69.9, 125.9)], ['Parmegiana de frango', '', duo(51.9, 93.9)],
+    ['Leopoldina de filé mignon', 'Milanesa com pomodoro, requeijão cremoso e azeitonas verdes', duo(82.9, 149.9)],
+    ['Leopoldina de contrafilé', 'Milanesa com pomodoro, requeijão cremoso e azeitonas verdes', duo(74.9, 134.9)],
+    ['Leopoldina de frango', 'Milanesa com pomodoro, requeijão cremoso e azeitonas verdes', duo(56.9, 102.9)]
+  ]},
+  'Churrascada': { itens: [
+    ['Churras Picanha', 'Picanha, tulipa de frango, linguiça toscana, queijo coalho e pão de alho', 199.9],
+    ['Churras Mignon', 'Filé mignon, coração de frango, abobrinha com parmesão e queijo coalho', 189.9],
+    ['Churras Fraldinha', 'Fraldinha, queijo coalho e legumes grelhados', 169.9],
+    ['Churras Contra', 'Contrafilé, filé de frango e linguiça toscana', 159.9]
+  ]},
+  'Espetos': { nota: 'Na parrilla, com farofa e vinagrete.', itens: [
+    ['Toscana', 'Unidade', 9.9], ['Queijo coalho', '', 12.9], ['Pão de alho', '', 12.9], ['Vegano', 'Tomate, abobrinha e cebola', 13.9],
+    ['Abobrinha com parmesão', '', 13.9], ['Frango', '', 13.9], ['Kafta', '', 13.9], ['Coração', '', 13.9], ['Misto', 'Frango, carne e linguiça', 13.9],
+    ['Carne', '', 14.9], ['Tulipa de frango', '', 14.9], ['Medalhão de frango com bacon', '', 18.9], ['Medalhão de carne com bacon', '', 19.9]
+  ]},
+  'Entradas e porções': { itens: [
+    ['Caldinho de feijão', 'Com torradas', 14.9], ['Batatas fritas', '', meia(27.9, 39.9)], ['Fritas com cheddar e bacon', '', meia(34.9, 49.9)],
+    ['Mandioca frita', '', meia(27.9, 39.9)], ['Pastel', 'Calabresa com requeijão, carne ou queijo', meia(27.9, 39.9)], ['Bolinho de arroz', '', meia(27.9, 39.9)],
+    ['Polenta frita com parmesão', '', meia(29.9, 42.9)], ['Dadinho de tapioca', 'Com geleia de pimenta', meia(29.9, 42.9)],
+    ['Bolinho da Vó', '', meia(34.9, 49.9)], ['Croquete de carne', '', meia(34.9, 49.9)], ['Torresmo de rolo', 'Com geleia de goiabada', meia(42.9, 72.9)],
+    ['Torresminho', '', 19.9], ['Tulipa de frango', '', 39.9], ['Boteco pra dois', 'Pastel, dadinho, bolinho da vó, bolinho de arroz e croquete', 52.9],
+    ['Calabresa na cachaça', '', 59.9], ['Isca de frango à milanesa', '', 59.9], ['Frango à passarinho', '', 59.9], ['Isca de peixe à milanesa', '', 69.9],
+    ['Tábua arretada', 'Carne seca com mandioca, cesta de pão, farofa e vinagrete', 79.9], ['Contrafilé acebolado', '', 89.9],
+    ['Filé mignon acebolado', '', 109.9], ['Parrilla mix', '', 119.9], ['Filé mignon ao molho de requeijão', '', 129.9],
+    ['Picanha no rechaud com batatas fritas', 'Farofa e vinagrete', 179.9],
+    ['Promoção 2 é Par', '2 cervejas long neck + 2 de cada: pastel, bolinho da vó, bolinho de arroz, croquete e dadinho', 74.9]
+  ]},
+  'Risotos, massas e saladas': { itens: [
+    ['Risoto de alho-poró', 'Com filé mignon ao molho madeira', 69.9], ['Risoto de limão-siciliano', 'Com tilápia grelhada ao pesto', 64.9],
+    ['Nhoque Donna Mariah', 'Ao molho bolonhesa', 49.9], ['Fettuccine com polpetone', 'Com ervas finas e molho pomodoro', 49.9],
+    ['Salada Donna Mariah', 'Alface, tomate, cenoura, palmito, cebola e batata palha', 39.9], ['Salada Donna Cris', 'Folhas, tomate seco, palmito, cebola roxa e molho honey mustard', 45.9],
+    ['Omelete', 'Vegetariano, com arroz, fritas ou legumes', 39.9], ['Parmegiana de berinjela', 'Com arroz e fritas', 42.9]
+  ]},
+  'Burgers': { nota: 'Com maionese verde e batatas fritas.', itens: [
+    ['Burguer 1802', 'Pão, carne e queijo', 32.9], ['Burguer 56', 'Pão, carne, queijo, alface e tomate', 36.9],
+    ['Burguer 97', 'Carne, bacon, cheddar cremoso e barbecue', 39.9], ['Burguer 238', 'Carne, queijo, bacon e cebola roxa caramelizada', 39.9]
+  ]},
+  'Drinks': { itens: [
+    ['Caipirinhas especiais Mariah', 'Com nome das ruas do bairro. Cachaça ou vodka', 34.9], ['Caipirinha tradicional', 'Cachaça ou vodka', 29.9],
+    ['Drinks clássicos', 'Mojito, Aperol Spritz, Negroni, Margarita, Moscow Mule…', 34.9], ['Batidas', 'Paçoca, abacaxi, coco ou maracujá', 29.9],
+    ['Gin tônica Mariah', 'Tanqueray, siciliano e hortelã', 32.9], ['Gin tônica Honey, Red, Ginger ou Kaly', '', 34.9], ['Gin tônica Tropical', 'Red Bull tropical, maracujá e laranja', 37.9],
+    ['Vinho', 'Taça ou garrafa', 'R$ 16,90 · R$ 69,90']
+  ]},
+  'Cervejas e bebidas': { itens: [
+    ['Heineken 600 ml', '', 21.9], ['Original, Stella ou Serra Malte 600 ml', '', 17.9], ['Spaten 600 ml', '', 16.9], ['Amstel 600 ml', '', 14.9],
+    ['Long neck', 'Heineken, Heineken Zero, Stella, Pabst', 'R$ 11,90 · 12,90'], ['Especiais', 'Colorado Appia, Colorado Ribeirão, Baden Baden IPA', 'R$ 22,90 · 24,90'],
+    ['Suco natural', 'Copo ou jarra', 'R$ 11,90 · R$ 23,90'], ['Suco natural misto', 'Copo ou jarra', 'R$ 13,90 · R$ 25,90'],
+    ['Sucos especiais 450 ml', 'Refrescante, detox ou energético', 19.9], ['Italian soda', '', 14.9], ['Refrigerante lata', '', 7.9]
+  ]},
+  'Sobremesas e kids': { itens: [
+    ['Petit gâteau', 'Com sorvete de creme', 25.9], ['Taça banoffee', 'Bolacha, banana, doce de leite, chantilly e cacau', 24.9],
+    ['Pudim de leite', '', 13.9], ['Pudim de paçoca', '', 13.9], ['Sorvete de creme', '', 11.9], ['Café espresso', 'Ou com chantilly', 'R$ 5,90 · R$ 8,90'],
+    ['Kids I: filé de frango', 'Arroz, feijão e fritas. Até 8 anos', 29.9], ['Kids II: contrafilé', 'Arroz, feijão e fritas. Até 8 anos', 35.9]
+  ]}
+};
+const tabs = document.getElementById('tabs');
+function showCategory(cat) {
+  tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+  document.getElementById('menu-note').textContent = CARDAPIO[cat].nota || '';
+  document.getElementById('menu').innerHTML = CARDAPIO[cat].itens.map(([n, d, p]) =>
+    `<div class="item"><div><h3>${n}</h3>${d ? `<p>${d}</p>` : ''}</div><span class="price">${brl(p)}</span></div>`).join('');
+}
+tabs.innerHTML = Object.keys(CARDAPIO).map(c => `<button class="tab" data-cat="${c}">${c}</button>`).join('');
+tabs.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showCategory(t.dataset.cat)));
+showCategory('Primes');
+
+// Horários (minutos desde a meia-noite) e aviso de aberto/fechado
+const HORARIOS = [[1, 'Segunda', 690, 960], [2, 'Terça', 690, 960], [3, 'Quarta', 690, 960], [4, 'Quinta', 690, 1380], [5, 'Sexta', 690, 1380], [6, 'Sábado', 690, 1380], [0, 'Domingo', 690, 1020]];
+const fmt = m => `${Math.floor(m / 60)}h${m % 60 ? String(m % 60).padStart(2, '0') : ''}`;
+const now = new Date(), today = now.getDay(), minutes = now.getHours() * 60 + now.getMinutes();
+const hoursOf = d => HORARIOS.find(h => h[0] === d);
+document.getElementById('hours').innerHTML = HORARIOS.map(([d, dia, a, f]) =>
+  `<li class="${d === today ? 'today' : ''}"><span>${dia}</span><span>${fmt(a)} às ${fmt(f)}</span></li>`).join('');
+const [, , abre, fecha] = hoursOf(today);
+const status = document.getElementById('status');
+if (minutes >= abre && minutes < fecha) {
+  status.textContent = `Aberto agora · fecha às ${fmt(fecha)}`;
+  status.classList.add('open');
+} else {
+  status.textContent = `Fechado agora · ${minutes < abre ? `abre hoje às ${fmt(abre)}` : `abre amanhã às ${fmt(hoursOf((today + 1) % 7)[2])}`}`;
+}
+
+const menuBtn = document.querySelector('.menu-btn');
+const navList = document.querySelector('.nav ul');
+menuBtn.addEventListener('click', () => navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+</script>
+</body>
+</html>
