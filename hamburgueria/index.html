@@ -39,7 +39,9 @@
   .badge { display: inline-block; background: var(--orange); color: #fff; padding: 6px 14px; border-radius: 4px; font-weight: 800; font-size: .8rem; letter-spacing: 1px; margin-bottom: 18px; }
 
   .strip { background: var(--yellow); color: #111; padding: 18px 0; overflow: hidden; white-space: nowrap; font-family: 'Bebas Neue'; font-size: 1.6rem; }
-  .strip div { display: inline-block; animation: scroll 25s linear infinite; }
+  .strip-track { display: flex; width: max-content; animation: scroll 20s linear infinite; }
+  .strip-group { display: flex; flex-shrink: 0; min-width: 100vw; justify-content: space-around; }
+  .strip-group span { padding: 0 12px; }
   @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   section { padding: 100px 0; }
@@ -118,8 +120,9 @@
   <div class="hero-img" role="img" aria-label="Hambúrguer artesanal"></div>
 </section>
 
-<div class="strip"><div>
-  SMASH BURGER ★ BATATA RÚSTICA ★ MILKSHAKE ★ DELIVERY RÁPIDO ★ BLEND DA CASA ★ SMASH BURGER ★ BATATA RÚSTICA ★ MILKSHAKE ★ DELIVERY RÁPIDO ★ BLEND DA CASA ★&nbsp;
+<div class="strip"><div class="strip-track">
+  <div class="strip-group"><span>SMASH BURGER ★</span><span>BATATA RÚSTICA ★</span><span>MILKSHAKE ★</span><span>DELIVERY RÁPIDO ★</span><span>BLEND DA CASA ★</span><span>SMASH BURGER ★</span><span>BATATA RÚSTICA ★</span><span>MILKSHAKE ★</span><span>DELIVERY RÁPIDO ★</span><span>BLEND DA CASA ★</span></div>
+  <div class="strip-group" aria-hidden="true"><span>SMASH BURGER ★</span><span>BATATA RÚSTICA ★</span><span>MILKSHAKE ★</span><span>DELIVERY RÁPIDO ★</span><span>BLEND DA CASA ★</span><span>SMASH BURGER ★</span><span>BATATA RÚSTICA ★</span><span>MILKSHAKE ★</span><span>DELIVERY RÁPIDO ★</span><span>BLEND DA CASA ★</span></div>
 </div></div>
 
 <section id="cardapio">
