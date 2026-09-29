@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Lima Perú | Cozinha Peruana em Perdizes</title>
+<meta name="description" content="Restaurante peruano em Perdizes, São Paulo. Ceviches, lomo saltado, causas e chaufas. Reservas pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c1121f; --red-dark: #8f0d17; --cream: #fff8f0; --sand: #f6ebdd; --ink: #2a1714; --muted: #7b635c; --gold: #f2b134; --green: #25d366;
+    --wave: radial-gradient(circle at 50% 100%, transparent 38%, rgba(255,255,255,.07) 39%, rgba(255,255,255,.07) 46%, transparent 47%, transparent 56%, rgba(255,255,255,.07) 57%, rgba(255,255,255,.07) 64%, transparent 65%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3.display { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 1px; line-height: 1; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .red-bg { background-color: var(--red); background-image: var(--wave); background-size: 64px 32px; color: #fff; }
+
+  .preview-bar { background: var(--ink); color: #f3dcd4; font-size: .8rem; text-align: center; padding: 8px 16px; }
+  .preview-bar a { color: var(--gold); font-weight: 600; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(255,248,240,.96); backdrop-filter: blur(8px); border-bottom: 1px solid #efdfcc; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+  .logo { display: flex; flex-direction: column; line-height: 1; }
+  .logo strong { font-family: 'Bebas Neue'; font-size: 2rem; color: var(--red); letter-spacing: 1px; }
+  .logo small { font-size: .68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .nav ul { display: flex; gap: 26px; list-style: none; font-weight: 500; font-size: .95rem; }
+  .nav ul a:hover { color: var(--red); }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.7rem; cursor: pointer; color: var(--ink); }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-weight: 600; transition: transform .15s, background .15s; border: 0; cursor: pointer; font-family: inherit; font-size: 1rem; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { background: var(--red-dark); }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-line { border: 2px solid rgba(255,255,255,.7); color: #fff; }
+  .btn-sm { padding: 10px 20px; font-size: .9rem; }
+
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; min-height: min(calc(100vh - 110px), 780px); }
+  .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 64px max(32px, calc((100vw - 1140px) / 2)); padding-right: 56px; }
+  .tag { display: inline-block; font-size: .78rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(3.4rem, 7.5vw, 6.2rem); margin-bottom: 20px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { font-size: 1.08rem; max-width: 470px; opacity: .95; margin-bottom: 30px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .rating { display: inline-flex; align-items: center; gap: 10px; margin-top: 34px; background: rgba(0,0,0,.18); padding: 10px 18px; border-radius: 14px; width: fit-content; }
+  .rating .stars { color: var(--gold); letter-spacing: 2px; }
+  .rating strong { font-size: 1.3rem; }
+  .rating small { opacity: .85; }
+  .hero-img { position: relative; overflow: hidden; background: var(--sand); }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 80%; }
+  .hero-img .badge { position: absolute; left: 24px; bottom: 24px; background: var(--cream); color: var(--ink); padding: 12px 18px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+  .hero-img .badge strong { display: block; font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--red); letter-spacing: 1px; }
+  .hero-img .badge span { font-size: .85rem; color: var(--muted); }
+
+  section { padding: 96px 0; }
+  .title { text-align: center; margin-bottom: 52px; }
+  .title .tag { color: var(--red); }
+  .title h2 { font-size: clamp(2.6rem, 5vw, 3.8rem); }
+  .title p { color: var(--muted); max-width: 560px; margin: 10px auto 0; }
+
+  .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .dish { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 30px rgba(42,23,20,.07); transition: transform .2s; }
+  .dish:hover { transform: translateY(-6px); }
+  .dish img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--sand); }
+  .dish .body { padding: 20px 22px 24px; }
+  .dish .head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .dish h3 { font-size: 1.1rem; }
+  .dish .price { color: var(--red); font-weight: 700; white-space: nowrap; }
+  .dish p { color: var(--muted); font-size: .9rem; margin-top: 6px; }
+
+  .menu { background: var(--sand); }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 36px; scrollbar-width: thin; justify-content: center; flex-wrap: wrap; }
+  .tab { flex: 0 0 auto; padding: 10px 20px; border-radius: 999px; border: 2px solid var(--red); background: none; color: var(--red); font: 600 .9rem 'Poppins'; cursor: pointer; }
+  .tab.active { background: var(--red); color: #fff; }
+  .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 56px; }
+  .item { display: flex; justify-content: space-between; gap: 18px; padding: 18px 0; border-bottom: 1px dashed #d9c4ac; }
+  .item h3 { font-size: 1.02rem; font-weight: 600; }
+  .item p { color: var(--muted); font-size: .88rem; margin-top: 2px; }
+  .item .price { font-weight: 700; color: var(--red); white-space: nowrap; }
+  .menu-note { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 32px; }
+
+  .ambiente { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .ambiente img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 24px; background: var(--sand); }
+  .ambiente h2 { font-size: clamp(2.6rem, 5vw, 3.6rem); margin-bottom: 18px; }
+  .ambiente p { color: var(--muted); margin-bottom: 16px; }
+  .ambiente .tag { color: var(--red); }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 32px; }
+  .facts div { background: #fff; border-radius: 16px; padding: 18px; text-align: center; }
+  .facts strong { display: block; font-family: 'Bebas Neue'; font-size: 2rem; color: var(--red); letter-spacing: 1px; line-height: 1.1; }
+  .facts span { font-size: .8rem; color: var(--muted); }
+
+  .info { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; }
+  .info h3 { font-family: 'Bebas Neue'; font-weight: 400; font-size: 1.9rem; letter-spacing: 1px; margin-bottom: 10px; }
+  .info .block { margin-bottom: 30px; }
+  .hours { list-style: none; max-width: 380px; }
+  .hours li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+  .hours li.today { color: var(--gold); font-weight: 600; }
+  .info iframe { width: 100%; height: 100%; min-height: 380px; border: 0; border-radius: 22px; }
+
+  .cta { text-align: center; padding: 88px 0; }
+  .cta h2 { font-size: clamp(2.6rem, 6vw, 4.4rem); margin-bottom: 14px; }
+  .cta p { opacity: .9; margin-bottom: 30px; }
+
+  footer { background: var(--ink); color: #cdb5ad; text-align: center; padding: 32px 16px; font-size: .85rem; }
+  footer a { color: var(--gold); font-weight: 600; }
+
+  .whatsapp { position: fixed; right: 20px; bottom: 20px; z-index: 30; width: 60px; height: 60px; border-radius: 50%; background: var(--green); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); transition: transform .15s; }
+  .whatsapp:hover { transform: scale(1.08); }
+  .whatsapp svg { width: 32px; height: 32px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    .nav ul { display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--cream); border-bottom: 1px solid #efdfcc; }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 14px 16px; }
+    .nav .btn { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero-text { padding: 56px 16px; }
+    .hero-img { aspect-ratio: 4/3; }
+    .dishes { grid-template-columns: 1fr 1fr; }
+    .menu-list, .ambiente, .info { grid-template-columns: 1fr; }
+    .tabs { justify-content: flex-start; flex-wrap: nowrap; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 560px) {
+    .dishes { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .facts div { padding: 12px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">Prévia criada para o Lima Perú por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>. Este ainda não é o site oficial do restaurante.</div>
+
+<header>
+  <nav class="container nav">
+    <a href="#" class="logo"><strong>Lima Perú</strong><small>Cozinha Peruana</small></a>
+    <button class="menu-btn" aria-label="Abrir menu">☰</button>
+    <ul>
+      <li><a href="#destaques">Destaques</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#ambiente">Ambiente</a></li>
+      <li><a href="#contato">Horários e endereço</a></li>
+    </ul>
+    <a class="btn btn-red btn-sm wa-reserva" href="#" target="_blank">Reservar mesa</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="hero-text red-bg">
+    <span class="tag">Cozinha peruana em Perdizes</span>
+    <h1>O sabor de Lima,<br><span>aqui em São Paulo.</span></h1>
+    <p>Ceviches frescos, lomo saltado, causas e chaufas preparados com pimentas e receitas tradicionais do Peru.</p>
+    <div class="actions">
+      <a class="btn btn-gold wa-reserva" href="#" target="_blank">Reservar pelo WhatsApp</a>
+      <a class="btn btn-line" href="#cardapio">Ver cardápio</a>
+    </div>
+    <div class="rating">
+      <strong>4,8</strong>
+      <div><div class="stars">★★★★★</div><small>517 avaliações no Google</small></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="img/ceviche-nikkei-real.jpg" alt="Ceviche Nikkei com salmão, cancha e ninho crocante">
+    <div class="badge"><strong>Ceviches frescos</strong><span>Seis versões · a partir de R$ 60,50</span></div>
+  </div>
+</section>
+
+<section id="destaques">
+  <div class="container">
+    <div class="title">
+      <span class="tag">Os mais pedidos</span>
+      <h2>Destaques da casa</h2>
+      <p>Pratos que fazem nossos clientes voltarem.</p>
+    </div>
+    <div class="dishes" id="dishes"></div>
+  </div>
+</section>
+
+<section id="cardapio" class="menu">
+  <div class="container">
+    <div class="title">
+      <span class="tag">Cardápio completo</span>
+      <h2>Do ceviche ao suspiro</h2>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="menu-list" id="menu"></div>
+    <p class="menu-note">Temos também carta de vinhos chilenos e argentinos. Preços sujeitos a alteração.</p>
+  </div>
+</section>
+
+<section id="ambiente">
+  <div class="container ambiente">
+    <img src="img/ambiente.jpg" alt="Choritos a la Chalaca e cerveja Cusqueña sobre toalha andina" loading="lazy">
+    <div>
+      <span class="tag">Nosso espaço</span>
+      <h2>Um pedacinho do Peru em Perdizes</h2>
+      <p>Varanda arejada, mesas com tecidos andinos coloridos, cerveja Cusqueña gelada e aquele clima de almoço sem pressa.</p>
+      <p>Perfeito para almoçar com a família, reunir os amigos no fim de semana ou apresentar a cozinha peruana para quem ainda não conhece.</p>
+      <div class="facts">
+        <div><strong>4,8★</strong><span>no Google</span></div>
+        <div><strong>517</strong><span>avaliações</span></div>
+        <div><strong>50+</strong><span>pratos</span></div>
+      </div>
+      <a class="btn btn-red wa-reserva" href="#" target="_blank">Reservar minha mesa</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="red-bg">
+  <div class="container info">
+    <div>
+      <div class="block">
+        <h3>Endereço</h3>
+        <p>R. Dr. Cândido Espinheira, 445<br>Perdizes, São Paulo, SP</p>
+      </div>
+      <div class="block">
+        <h3>Horários</h3>
+        <ul class="hours" id="hours"></ul>
+      </div>
+      <div class="block">
+        <h3>Reservas e pedidos</h3>
+        <p style="margin-bottom:16px">(11) 97050-3463 · WhatsApp</p>
+        <a class="btn btn-gold wa-reserva" href="#" target="_blank">Falar no WhatsApp</a>
+      </div>
+    </div>
+    <iframe src="https://www.google.com/maps?q=R.+Dr.+C%C3%A2ndido+Espinheira,+445+-+Perdizes,+S%C3%A3o+Paulo&output=embed" loading="lazy" title="Mapa do Lima Perú"></iframe>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <span class="tag" style="color:var(--red)">Venha nos visitar</span>
+    <h2>Sua mesa está esperando</h2>
+    <p style="color:var(--muted)">Reserve pelo WhatsApp em menos de um minuto.</p>
+    <a class="btn btn-red wa-reserva" href="#" target="_blank">Reservar agora</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Lima Perú · Cozinha Peruana · Perdizes, São Paulo<br>
+  Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
+</footer>
+
+<a class="whatsapp wa-reserva" href="#" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+const WHATSAPP = '5511970503463';
+const waLink = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+document.querySelectorAll('.wa-reserva').forEach(a => a.href = waLink('Olá! Vi o site e gostaria de reservar uma mesa.'));
+
+const DESTAQUES = [
+  { nome: 'Choritos a la Chalaca', desc: 'Tostones crocantes cobertos com mariscos, cebola, tomate, milho e coentro curtidos no limão.', preco: '57,50', img: 'ambiente.jpg' },
+  { nome: 'Causa de Frango', desc: 'Massa de batata com pimenta amarela, recheada de frango com maionese.', preco: '43,50', img: 'causa-frango.jpg' },
+  { nome: 'Polvo Grelhado', desc: 'Polvo no molho brasa da casa, sobre batata, com abacate e legumes.', preco: '145,50', img: 'polvo-real.jpg' },
+  { nome: 'Wantán Frito', desc: 'Pastelzinho crocante recheado de frango, com molho de tamarindo. 6 ou 12 unidades.', preco: '22,50', de: true, img: 'wantan.jpg' },
+  { nome: 'Ceviche de Peixe', desc: 'O clássico: peixe branco curtido no limão, cebola roxa e coentro, com batata-doce e cancha.', preco: '62,50', img: 'ceviche-peixe-real.jpg' },
+  { nome: 'Arroz Chaufa', desc: 'Arroz salteado no wok com ovo, cebolinha e shoyu. De frango, carne, misto ou vegetariano.', preco: '54,50', de: true, img: 'chaufa.jpg' }
+];
+
+const CARDAPIO = {
+  'Ceviches': [
+    ['Ceviche de Peixe', 'Peixe branco curtido no limão, cebola e coentro, com batata cozida, batata-doce e cancha.', '62,50'],
+    ['Ceviche Salmón', 'Salmão curtido no limão, cebola e coentro, com batata cozida, batata-doce e cancha.', '72,50'],
+    ['Ceviche Misto', 'Peixe branco, mexilhão, lula e camarão curtidos no limão, com batata-doce e cancha.', '78,50'],
+    ['Ceviche Lima Perú', 'Ceviche de peixe com molho de pimenta amarela e chicharrón de lula.', '77,50'],
+    ['Ceviche Nikkei', 'Salmão e abacate marinados em leite de tigre e molho nikkei.', '79,50'],
+    ['Ceviche Vegetariano', 'Cogumelos defumados no wok, abobrinha, palmito e cebola curtidos no limão.', '60,50']
+  ],
+  'Entradas': [
+    ['Papa a la Huancaína', 'Batata cozida com creme de huancaína, ovo e azeitona.', '36,50'],
+    ['Causa de Frango', 'Massa de batata com pimenta amarela, recheada de frango com maionese.', '43,50'],
+    ['Causa Acevichada', 'Causa recheada de abacate e coberta com ceviche de peixe.', '55,50'],
+    ['Leche de Tigre', 'Pedaços de peixe marinados no limão, com o picante no ponto.', '48,50'],
+    ['Choritos a la Chalaca', 'Mariscos com cebola, tomate, milho e coentro sobre tostones crocantes.', '57,50'],
+    ['Wantán Frito', 'Pastel recheado de frango com molho de tamarindo. 6 ou 12 unidades.', '22,50 / 42,50'],
+    ['Tequeños de Lomo', 'Rolinhos recheados de lomo salteado com molho huancaína (6 un).', '30,50'],
+    ['Yuquitas Rellenas', 'Bolinhos de mandioca com muçarela e molho huancaína (5 un).', '34,50'],
+    ['Anticuchos', 'Espetinhos de coração de boi com batata dourada, milho e chimichurri.', '48,50']
+  ],
+  'Pratos da Casa': [
+    ['Ají de Gallina', 'Frango em molho cremoso de pimenta amarela, com arroz, batata, ovo e azeitona.', '59,50'],
+    ['Filet de Peixe Frito', 'Peixe branco empanado com batata dourada, arroz e saladinha.', '64,50'],
+    ['Hofun à Huancaína com Lomo Saltado', 'Massa de arroz com molho huancaína e lomo saltado.', '88,50'],
+    ['Arroz con Mariscos', 'Arroz com frutos do mar e pimentas do Peru.', '125,00'],
+    ['Polvo Grelhado', 'Molho brasa da casa, batata baby, cogumelos, alcaparras e chimichurri.', '145,50']
+  ],
+  'Saltados': [
+    ['Lomo Saltado', 'Filé mignon com cebola, tomate, coentro e shoyu. Arroz e fritas.', '79,50'],
+    ['Lomo Saltado a lo Pobre', 'O clássico com ovo frito e banana-da-terra.', '86,50'],
+    ['Frango Saltado', 'Filé de frango com cebola, tomate, coentro e shoyu. Arroz e fritas.', '55,50'],
+    ['Saltado Vegetariano', 'Legumes no wok com batatas fritas e arroz.', '57,50']
+  ],
+  'Sudados': [
+    ['Sudado de Pescado', 'Peixe ao vapor em molho cremoso de pimentas peruanas, mandioca e arroz.', '90,50'],
+    ['Pescado a lo Macho', 'Corvina na chapa com frutos do mar em molho cremoso de pimentas.', '112,50'],
+    ['Sudado Especial', 'Peixe e frutos do mar no vapor com legumes e um ceviche clássico por cima.', '135,50']
+  ],
+  'Chaufa e Massas': [
+    ['Chaufa de Frango', 'Arroz no wok com frango, ovo, cebolinha e shoyu.', '54,50'],
+    ['Chaufa Vegetariano', 'Arroz no wok com legumes, cogumelo, ovo e shoyu.', '55,50'],
+    ['Chaufa Misto', 'Arroz no wok com carne, frango, ovo e cebolinha.', '56,50'],
+    ['Chaufa de Carne', 'Arroz no wok com carne, ovo, cebolinha e shoyu.', '57,50'],
+    ['Chaufa Misto com Camarão', 'Arroz no wok com carne, frango e camarão.', '74,50'],
+    ['Chaufa Lima Perú', 'Arroz e macarrão no wok com carne, frango, camarão, porco assado e ovo.', '90,50'],
+    ['Chaufa Mariscos', 'Arroz no wok com lula, camarão, mexilhão e polvo.', '98,50'],
+    ['Talharim de Frango', 'Macarrão com frango, legumes e shoyu.', '62,50'],
+    ['Talharim de Carne', 'Macarrão com carne macia, legumes e shoyu.', '66,50'],
+    ['Talharim Lima Perú', 'Macarrão com frango, carne, porco e camarão.', '98,50'],
+    ['Talharim com Frutos do Mar', 'Lula, mexilhão, polvo, camarão e legumes.', '110,50']
+  ],
+  'Chicharrones': [
+    ['Chicharrón de Frango', 'Frango marinado e empanado, com arroz, fritas, salada e molhos da casa.', '55,50'],
+    ['Chicharrón de Peixe', 'Com mandioca, salsa criolla e molhos da casa.', '76,50'],
+    ['Chicharrón de Lula', 'Com mandioca, salsa criolla e molhos da casa.', '94,50'],
+    ['Chicharrón Misto', 'Peixe, lula, mexilhões e camarão empanados, com mandioca e salsa criolla.', '105,50'],
+    ['Chicharrón de Camarão', 'Empanado no panko com maionese acevichada e molho rosé.', '107,50']
+  ],
+  'Sopas': [
+    ['Dieta de Frango', 'Peito de frango suave com cabelo de anjo.', '40,50'],
+    ['Sopa Wantán de Frango', 'Frango, wantán, acelga, cebolinha e macarrão.', '44,50'],
+    ['Sopa Criolla', 'Carne, cabelo de anjo, ovo e leite.', '49,50'],
+    ['Sopa Wantán Lima Perú', 'Frango, camarão, porco, carne, brócolis, acelga e macarrão.', '68,50']
+  ],
+  'Sobremesas': [
+    ['Suspiro a la Limeña', 'Doce de leite, pisco e merengue.', '20,50'],
+    ['Alfajor', 'Biscoito suave recheado com doce de leite.', '20,50'],
+    ['Bolo Tres Leches', 'Bolo molhado com três leites, chantilly e canela.', '31,50'],
+    ['Chocotejas', 'Chocolate recheado com nozes e doce de leite.', 'consulte']
+  ]
+};
+
+const HORARIOS = [
+  ['Segunda', 'Fechado'],
+  ['Terça', '12h–15h · 18h–22h'],
+  ['Quarta', '12h–15h · 18h–22h'],
+  ['Quinta', '12h–15h · 18h–22h'],
+  ['Sexta', '12h–15h · 18h–22h'],
+  ['Sábado', '12h–22h'],
+  ['Domingo', '12h–17h']
+];
+
+document.getElementById('dishes').innerHTML = DESTAQUES.map(d => `
+  <article class="dish">
+    <img src="img/${d.img}" alt="${d.nome}" loading="lazy">
+    <div class="body">
+      <div class="head"><h3>${d.nome}</h3><span class="price">${d.de ? 'a partir de ' : ''}R$ ${d.preco}</span></div>
+      <p>${d.desc}</p>
+    </div>
+  </article>`).join('');
+
+const tabs = document.getElementById('tabs');
+const menu = document.getElementById('menu');
+const showCategory = cat => {
+  tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+  menu.innerHTML = CARDAPIO[cat].map(([nome, desc, preco]) => `
+    <div class="item">
+      <div><h3>${nome}</h3><p>${desc}</p></div>
+      <span class="price">${preco === 'consulte' ? 'Consulte' : 'R$ ' + preco}</span>
+    </div>`).join('');
+};
+tabs.innerHTML = Object.keys(CARDAPIO).map(c => `<button class="tab" data-cat="${c}">${c}</button>`).join('');
+tabs.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showCategory(t.dataset.cat)));
+showCategory('Ceviches');
+
+const today = new Date().getDay(); // 0 = domingo
+const order = [1, 2, 3, 4, 5, 6, 0];
+document.getElementById('hours').innerHTML = HORARIOS.map(([dia, h], i) =>
+  `<li class="${order[i] === today ? 'today' : ''}"><span>${dia}</span><span>${h}</span></li>`).join('');
+
+const menuBtn = document.querySelector('.menu-btn');
+const navList = document.querySelector('.nav ul');
+menuBtn.addEventListener('click', () => navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+</script>
+</body>
+</html>
