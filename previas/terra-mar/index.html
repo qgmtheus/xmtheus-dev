@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Terra Mar | Restaurante & Happy Hour</title>
+<meta name="description" content="Do café da manhã ao happy hour na Vila Leopoldina: pratos do dia, frutos do mar, grelhados, hambúrgueres, porções e drinks. Delivery e reservas pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #0f6d80; --sea-dark: #0b3d4a; --deep: #082a33; --sun: #f6b93b; --coral: #f26b3a;
+    --sand: #fbf5ea; --paper: #fff; --ink: #17313a; --muted: #5d6f75; --line: #e6ddcd; --green: #25d366;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; background: var(--sand); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3.round { font-family: 'Baloo 2', sans-serif; font-weight: 800; line-height: 1.05; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .kicker { display: inline-block; font-size: .78rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; }
+  .wave { height: 26px; background: radial-gradient(circle at 13px -6px, transparent 16px, var(--wave-color, var(--sand)) 17px) repeat-x; background-size: 26px 26px; }
+
+  .preview-bar { background: var(--deep); color: #cfe3e8; font-size: .8rem; text-align: center; padding: 8px 16px; }
+  .preview-bar a { color: var(--sun); font-weight: 800; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(251,245,234,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .badge-logo { width: 50px; height: 50px; border-radius: 50%; background: var(--sea); color: #fff; display: grid; place-items: center; font-family: 'Baloo 2'; font-weight: 800; font-size: .72rem; line-height: .95; text-align: center; border: 3px solid var(--sun); }
+  .logo strong { display: block; font-family: 'Baloo 2'; font-weight: 800; font-size: 1.45rem; line-height: 1; color: var(--sea-dark); }
+  .logo small { font-size: .7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--coral); }
+  .nav ul { display: flex; gap: 24px; list-style: none; font-weight: 800; font-size: .93rem; }
+  .nav ul a:hover { color: var(--coral); }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.7rem; cursor: pointer; color: var(--ink); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 999px; font-weight: 800; transition: transform .15s, filter .15s; border: 0; cursor: pointer; font-family: inherit; font-size: .98rem; }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+  .btn-sun { background: var(--sun); color: var(--deep); }
+  .btn-coral { background: var(--coral); color: #fff; }
+  .btn-line { border: 2px solid rgba(255,255,255,.7); color: #fff; }
+  .btn-sm { padding: 10px 18px; font-size: .9rem; }
+
+  .hero { position: relative; background: var(--sea-dark); color: #fff; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding: 64px 0 76px; }
+  .hero h1 { font-size: clamp(3rem, 7vw, 5.4rem); margin-bottom: 14px; }
+  .hero h1 span { color: var(--sun); }
+  .hero p { font-size: 1.1rem; color: #d3e6ea; max-width: 520px; margin-bottom: 26px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+  .chip { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); padding: 7px 14px; border-radius: 999px; font-size: .86rem; font-weight: 700; }
+  .chip.status::before { content: '●'; margin-right: 6px; color: #ef4444; }
+  .chip.status.open::before { color: var(--green); }
+  .hero-photos { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; height: 470px; }
+  .hero-photos img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+  .hero-photos img:first-child { grid-row: span 2; }
+  .hero + .wave { --wave-color: var(--sand); background-color: var(--sea-dark); }
+
+  section { padding: 84px 0; }
+  .title { text-align: center; margin-bottom: 40px; }
+  .title h2 { font-size: clamp(2.3rem, 5vw, 3.4rem); color: var(--sea-dark); }
+  .title p { color: var(--muted); max-width: 580px; margin: 10px auto 0; }
+
+  .periods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .period { background: var(--paper); border: 2px solid var(--line); border-radius: 22px; padding: 26px; position: relative; transition: transform .2s; }
+  .period.now { border-color: var(--coral); box-shadow: 0 16px 40px rgba(242,107,58,.18); transform: translateY(-6px); }
+  .period .now-tag { display: none; position: absolute; top: -13px; left: 22px; background: var(--coral); color: #fff; font-size: .72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; }
+  .period.now .now-tag { display: inline-block; }
+  .period .icon { font-size: 2rem; }
+  .period h3 { font-family: 'Baloo 2'; font-size: 1.6rem; color: var(--sea-dark); margin: 6px 0 2px; }
+  .period .time { font-weight: 800; color: var(--coral); font-size: .9rem; }
+  .period p { color: var(--muted); margin: 10px 0 14px; font-size: .95rem; }
+  .period a { font-weight: 800; color: var(--sea); }
+
+  .dayplate { background: var(--sea); color: #fff; }
+  .dayplate .title h2 { color: #fff; }
+  .dayplate .title p { color: #d3e6ea; }
+  .dayplate .kicker { color: var(--sun); }
+  .days { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .day { padding: 8px 16px; border-radius: 999px; border: 2px solid rgba(255,255,255,.4); background: none; color: #fff; font: 800 .88rem 'Nunito'; cursor: pointer; }
+  .day.active { background: var(--sun); border-color: var(--sun); color: var(--deep); }
+  .day-list { max-width: 760px; margin: 0 auto; display: grid; gap: 14px; }
+  .day-item { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 16px; padding: 18px 22px; display: flex; justify-content: space-between; gap: 18px; align-items: center; }
+  .day-item h3 { font-size: 1.1rem; }
+  .day-item p { color: #d3e6ea; font-size: .9rem; }
+  .day-item .price { font-family: 'Baloo 2'; font-weight: 800; font-size: 1.35rem; color: var(--sun); white-space: nowrap; }
+  .day-note { text-align: center; color: #d3e6ea; margin-top: 18px; font-size: .9rem; }
+
+  .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .dish { background: var(--paper); border-radius: 20px; overflow: hidden; border: 1px solid var(--line); transition: transform .2s, box-shadow .2s; }
+  .dish:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(8,42,51,.12); }
+  .dish img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .dish .body { padding: 16px 20px 20px; }
+  .dish .head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .dish h3 { font-size: 1.05rem; }
+  .dish .price { color: var(--coral); font-weight: 800; white-space: nowrap; }
+  .dish p { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+  .dish .tag { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sea); margin-bottom: 2px; }
+
+  .menu { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 26px; justify-content: center; flex-wrap: wrap; }
+  .tab { flex: 0 0 auto; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--sea); background: none; color: var(--sea); font: 800 .86rem 'Nunito'; cursor: pointer; }
+  .tab.active { background: var(--sea); color: #fff; }
+  .menu-note { text-align: center; color: var(--muted); font-size: .9rem; margin-bottom: 12px; min-height: 1em; }
+  .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+  .item { display: flex; justify-content: space-between; gap: 18px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+  .item h3 { font-size: .98rem; font-weight: 800; }
+  .item p { color: var(--muted); font-size: .86rem; margin-top: 2px; }
+  .item .price { font-weight: 800; color: var(--coral); white-space: nowrap; text-align: right; }
+
+  .happy { background: var(--deep); color: #fff; }
+  .happy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .happy h2 { font-size: clamp(2.3rem, 5vw, 3.4rem); margin-bottom: 14px; }
+  .happy h2 span { color: var(--sun); }
+  .happy p { color: #c9dde2; margin-bottom: 14px; }
+  .happy ul { list-style: none; margin: 18px 0 26px; }
+  .happy li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .happy li span:last-child { color: var(--sun); font-weight: 800; }
+  .happy-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .happy-photos img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 18px; }
+  .club { margin-top: 18px; background: rgba(246,185,59,.12); border: 1px dashed var(--sun); border-radius: 14px; padding: 14px 16px; font-size: .92rem; color: #f3e3bd; }
+
+  .about { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+  .about img { border-radius: 22px; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .about h2 { font-size: clamp(2.2rem, 4.6vw, 3.2rem); color: var(--sea-dark); margin-bottom: 14px; }
+  .about p { color: var(--muted); margin-bottom: 12px; }
+  .values { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .values span { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .84rem; font-weight: 700; }
+
+  .info-wrap { background: #eef4f4; }
+  .info { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; }
+  .info h3 { font-family: 'Baloo 2'; font-size: 1.6rem; color: var(--sea-dark); margin-bottom: 8px; }
+  .info .block { margin-bottom: 26px; }
+  .hours { list-style: none; max-width: 380px; }
+  .hours li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid #d3e0e0; }
+  .hours li.today { color: var(--coral); font-weight: 800; }
+  .info iframe { width: 100%; height: 100%; min-height: 400px; border: 0; border-radius: 20px; }
+
+  .cta { text-align: center; padding: 90px 0; }
+  .cta h2 { font-size: clamp(2.3rem, 5.5vw, 3.8rem); color: var(--sea-dark); margin-bottom: 12px; }
+  .cta p { color: var(--muted); margin-bottom: 26px; }
+
+  footer { background: var(--deep); color: #b9d0d6; text-align: center; padding: 32px 16px; font-size: .85rem; }
+  footer a { color: var(--sun); font-weight: 800; }
+
+  .whatsapp { position: fixed; right: 20px; bottom: 20px; z-index: 30; width: 60px; height: 60px; border-radius: 50%; background: var(--green); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); transition: transform .15s; }
+  .whatsapp:hover { transform: scale(1.08); }
+  .whatsapp svg { width: 32px; height: 32px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    .nav ul { display: none; position: absolute; top: 74px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--sand); border-bottom: 1px solid var(--line); }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 14px 16px; }
+    .nav .btn { display: none; }
+    .hero-grid, .happy-grid, .about, .info { grid-template-columns: 1fr; gap: 36px; }
+    .hero-grid { padding: 44px 0 56px; }
+    .hero-photos { height: 360px; }
+    .periods, .dishes { grid-template-columns: 1fr 1fr; }
+    .menu-list { grid-template-columns: 1fr; }
+    .tabs { justify-content: flex-start; flex-wrap: nowrap; }
+    section { padding: 66px 0; }
+  }
+  @media (max-width: 560px) {
+    .periods, .dishes { grid-template-columns: 1fr; }
+    .hero-photos { height: 300px; }
+    .day-item { flex-direction: column; align-items: flex-start; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">Prévia criada para o Terra Mar por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>. Este ainda não é o site oficial do restaurante.</div>
+
+<header>
+  <nav class="container nav">
+    <a href="#" class="logo"><span class="badge-logo">TERRA<br>MAR</span><span><strong>Terra Mar</strong><small>Restaurante & Happy Hour</small></span></a>
+    <button class="menu-btn" aria-label="Abrir menu">☰</button>
+    <ul>
+      <li><a href="#prato-do-dia">Prato do dia</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#happy-hour">Happy hour</a></li>
+      <li><a href="#contato">Horários</a></li>
+    </ul>
+    <a class="btn btn-coral btn-sm wa" data-msg="reserva" href="#" target="_blank">Delivery e reservas</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="container hero-grid">
+    <div>
+      <span class="kicker" style="color:var(--sun)">Vila Leopoldina · segunda a sábado</span>
+      <h1>Do café da manhã ao <span>happy hour</span></h1>
+      <p>Pão na chapa às 6h, prato do dia no almoço, frutos do mar e grelhados à la carte, e chopp gelado com porção no fim do dia. Tudo no mesmo lugar.</p>
+      <div class="actions">
+        <a class="btn btn-sun wa" data-msg="delivery" href="#" target="_blank">Pedir delivery</a>
+        <a class="btn btn-line wa" data-msg="reserva" href="#" target="_blank">Reservar mesa</a>
+      </div>
+      <div class="chips">
+        <span class="chip status" id="status">Horário</span>
+        <span class="chip">R$ 20 a 100 por pessoa</span>
+      </div>
+    </div>
+    <div class="hero-photos">
+      <img src="img/salao.jpg" alt="Salão do Terra Mar com mesas postas e o logo na parede">
+      <img src="img/peixe.jpg" alt="Peixe grelhado com arroz, feijão e chopp">
+      <img src="img/caipirinha.jpg" alt="Caipirinha no copo do Terra Mar com patinho de borracha">
+    </div>
+  </div>
+</section>
+<div class="wave"></div>
+
+<section>
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Um lugar pra cada hora do dia</span>
+      <h2>Quando você vem?</h2>
+    </div>
+    <div class="periods">
+      <article class="period" data-from="360" data-to="660"><span class="now-tag">Agora</span><div class="icon">☕</div><h3>Café da manhã</h3><span class="time">a partir das 6h</span><p>Pão na chapa, tapiocas, salgados, sucos detox e açaí pra começar o dia.</p><a href="#cardapio" data-cat="Café da manhã">Ver o café da manhã →</a></article>
+      <article class="period" data-from="660" data-to="1020"><span class="now-tag">Agora</span><div class="icon">🍽️</div><h3>Almoço</h3><span class="time">prato do dia e à la carte</span><p>Um prato do dia diferente em cada dia da semana, grelhados, parmegianas e frutos do mar.</p><a href="#prato-do-dia">Ver o prato de hoje →</a></article>
+      <article class="period" data-from="1020" data-to="1380"><span class="now-tag">Agora</span><div class="icon">🍻</div><h3>Happy hour</h3><span class="time">até as 23h</span><p>Chopp Brahma, caipirinhas autorais, gins, porções na tábua e hambúrgueres artesanais.</p><a href="#happy-hour">Ver o happy hour →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="prato-do-dia" class="dayplate">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Todo dia tem</span>
+      <h2>Prato do dia</h2>
+      <p>Quarta e sábado é dia de feijoada. Sexta tem peixe ao molho de camarão e rabada.</p>
+    </div>
+    <div class="days" id="days"></div>
+    <div class="day-list" id="day-list"></div>
+    <p class="day-note" id="day-note"></p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Os mais pedidos</span>
+      <h2>Da terra e do mar</h2>
+    </div>
+    <div class="dishes">
+      <article class="dish"><img src="img/contrafile.jpg" alt="Contrafilé acebolado na tábua com fritas, vinagrete e farofa" loading="lazy"><div class="body"><span class="tag">Porção</span><div class="head"><h3>Contrafilé acebolado na tábua</h3><span class="price">R$ 62,90</span></div><p>Com fritas, vinagrete, farofa e maionese da casa.</p></div></article>
+      <article class="dish"><img src="img/burger.jpg" alt="Hambúrguer artesanal com o logo da casa marcado no pão" loading="lazy"><div class="body"><span class="tag">Hambúrguer artesanal</span><div class="head"><h3>Burguer da Terra</h3><span class="price">R$ 35,90</span></div><p>Hambúrguer de picanha, bacon, cheddar, alface e onion rings no brioche. Com fritas.</p></div></article>
+      <article class="dish"><img src="img/pasteis.jpg" alt="Pastéis fritos com vinagrete" loading="lazy"><div class="body"><span class="tag">Porção</span><div class="head"><h3>Mini pastéis</h3><span class="price">R$ 40,00</span></div><p>12 unidades: queijo, carne, pizza e camarão.</p></div></article>
+      <article class="dish"><img src="img/isca-frango.jpg" alt="Isca de frango à milanesa com fritas e molho" loading="lazy"><div class="body"><span class="tag">Porção</span><div class="head"><h3>Isca de frango à milanesa</h3><span class="price">R$ 44,00</span></div><p>Crocante, pra dividir com a turma.</p></div></article>
+      <article class="dish"><img src="img/peixe.jpg" alt="Peixe grelhado com arroz, feijão, farofa e couve" loading="lazy"><div class="body"><span class="tag">Grelhados</span><div class="head"><h3>Filé de peixe grelhado</h3><span class="price">R$ 27,90</span></div><p>Com arroz à grega, purê e salada.</p></div></article>
+      <article class="dish"><img src="img/caipirinha.jpg" alt="Caipirinha com o copo do Terra Mar" loading="lazy"><div class="body"><span class="tag">Caipirinhas</span><div class="head"><h3>Caipirinha da casa</h3><span class="price">a partir de R$ 21,90</span></div><p>Tradicional ou nos estilos da casa: Arretado, Recifense, Três Limões…</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="cardapio" class="menu">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Cardápio completo</span>
+      <h2>Tem de tudo um pouco</h2>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <p class="menu-note" id="menu-note"></p>
+    <div class="menu-list" id="menu"></div>
+  </div>
+</section>
+
+<section id="happy-hour" class="happy">
+  <div class="container happy-grid">
+    <div>
+      <span class="kicker" style="color:var(--sun)">Fim de tarde</span>
+      <h2>Happy hour <span>com cara de praia</span></h2>
+      <p>Chopp Brahma na caneca, caipirinhas nordestinas, gins autorais e porções na tábua pra dividir.</p>
+      <ul>
+        <li><span>Chopp Brahma 300 ml (caneca)</span><span>R$ 13,90</span></li>
+        <li><span>Caipirinha de pinga</span><span>R$ 21,90</span></li>
+        <li><span>Moscow Mule</span><span>R$ 32,00</span></li>
+        <li><span>Terra Mar (vodka, curaçau blue e manga)</span><span>R$ 26,00</span></li>
+        <li><span>Calabresa acebolada na tábua</span><span>R$ 39,90</span></li>
+      </ul>
+      <a class="btn btn-sun wa" data-msg="reserva" href="#" target="_blank">Reservar mesa pro happy hour</a>
+      <div class="club">🍾 <strong>Clube da garrafa:</strong> compre a garrafa do seu whisky, gin ou vodka e a gente guarda pra próxima visita.</div>
+    </div>
+    <div class="happy-photos">
+      <img src="img/caipirinha.jpg" alt="Caipirinha da casa" loading="lazy">
+      <img src="img/pasteis.jpg" alt="Pastéis com chopp e caipirinha ao fundo" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container about">
+    <img src="img/balcao.jpg" alt="Balcão com caixa, adega, garrafas e frutas" loading="lazy">
+    <div>
+      <span class="kicker">Quem somos</span>
+      <h2>Uma casa de família na Leopoldina</h2>
+      <p>O Terra Mar foi idealizado pela Sra. Edvania Barbosa, com base familiar sólida e a vontade de servir comida de qualidade num ambiente agradável, do primeiro café ao último chopp.</p>
+      <p>Na cozinha, o chef Fábio Henrique cuida de tudo, do bacalhau gratinado ao hambúrguer da casa.</p>
+      <div class="values"><span>Trabalho em equipe</span><span>Agilidade e qualidade</span><span>Responsabilidade ambiental</span><span>Respeito a quem está com a gente</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="info-wrap">
+  <div class="container info">
+    <div>
+      <div class="block">
+        <h3>Endereço</h3>
+        <p>Av. Imperatriz Leopoldina, 553<br>Vila Leopoldina, São Paulo, SP</p>
+      </div>
+      <div class="block">
+        <h3>Horários</h3>
+        <ul class="hours" id="hours"></ul>
+      </div>
+      <div class="block">
+        <h3>Delivery e reservas</h3>
+        <p style="margin-bottom:6px">WhatsApp (11) 91000-6569 · Telefone (11) 2614-2460</p>
+        <p style="margin-bottom:16px">Instagram @oficialterramar</p>
+        <a class="btn btn-coral wa" data-msg="delivery" href="#" target="_blank">Pedir pelo WhatsApp</a>
+      </div>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Av.+Imperatriz+Leopoldina,+553+-+Vila+Leopoldina,+S%C3%A3o+Paulo,+05089-001&output=embed" loading="lazy" title="Mapa do Terra Mar"></iframe>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Bateu a fome ou a sede?</h2>
+    <p>Pede no WhatsApp que a gente leva, ou reserva sua mesa e vem pra cá.</p>
+    <a class="btn btn-coral wa" data-msg="delivery" href="#" target="_blank">Pedir delivery</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Terra Mar Restaurante & Happy Hour · Vila Leopoldina, São Paulo<br>
+  Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
+</footer>
+
+<a class="whatsapp wa" data-msg="delivery" href="#" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+// WhatsApp de delivery e reservas, informado no cardápio da casa.
+const WHATSAPP = '5511910006569';
+const MSGS = { reserva: 'Olá! Vi o site e gostaria de reservar uma mesa.', delivery: 'Olá! Vi o site e gostaria de fazer um pedido.' };
+document.querySelectorAll('.wa').forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MSGS[a.dataset.msg])}`);
+
+const brl = v => typeof v === 'number' ? 'R$ ' + v.toFixed(2).replace('.', ',') : v;
+const p1p2 = (a, b) => `P1 ${brl(a)} · P2 ${brl(b)}`;
+
+const PRATO_DO_DIA = {
+  1: [['Virado à paulista', 'Arroz, tutu, couve, ovo, calabresa, bisteca, torresmo e banana', 31.9], ['Estrogonofe de camarão', 'Com arroz e batata palha', 36.9]],
+  2: [['Bife à rolê', 'Arroz, purê, feijão e salada da casa', 31.9], ['Frango à pizzaiolo', 'Arroz, fritas e salada da casa', 29.9]],
+  3: [['Feijoada', 'Arroz, couve, torresmo, bisteca, banana à milanesa, vinagrete e farofa crocante', 'P1 R$ 35 · P2 R$ 65 · P3 R$ 90']],
+  4: [['Lasanha à bolonhesa', '', 31.9], ['Lasanha vegetariana', '', 28.9]],
+  5: [['Filé de peixe ao molho de camarão', 'Arroz à grega e purê de batata', 35.9], ['Rabada', 'Arroz, polenta, feijão e salada da casa', 33.9]],
+  6: [['Feijoada', 'Arroz, couve, torresmo, bisteca, banana à milanesa, vinagrete e farofa crocante', 'P1 R$ 35 · P2 R$ 65 · P3 R$ 90']]
+};
+const DIAS = { 1: 'Segunda', 2: 'Terça', 3: 'Quarta', 4: 'Quinta', 5: 'Sexta', 6: 'Sábado' };
+
+const CARDAPIO = {
+  'Café da manhã': { nota: 'A partir das 6h, de segunda a sábado.', itens: [
+    ['Café', '', 4], ['Café expresso', 'Pequeno ou médio', 'R$ 7 · R$ 10'], ['Cappuccino', '', 7], ['Chocolate quente', 'Pequeno ou médio', 'R$ 4 · R$ 5,50'],
+    ['Pão na chapa com manteiga', '', 4], ['Pão na chapa com requeijão', '', 5.9], ['Pão com ovo', '', 6.9], ['Pão de queijo gratinado', '', 7],
+    ['Pão com Nutella', '', 6.9], ['Fatia de bolo', '', 4], ['Croissant', '', 7], ['Pão de queijo', '', 4.9],
+    ['Salgados', 'Coxinha, bolinho de carne, esfihas, pão de batata, bauruzinho', 6],
+    ['Tapioca de carne seca com Catupiry', '', 16.9], ['Tapioca de frango com Catupiry', '', 16.9], ['Tapioca de queijo coalho com mel', '', 14],
+    ['Tapioca de banana com Nutella', '', 14], ['Tapioca de morango com Nutella', '', 14], ['Tapioca de ovo mexido e queijo', '', 13]
+  ]},
+  'Sucos e açaí': { itens: [
+    ['Suco detox Imperatriz', 'Laranja, maçã, couve e mel', 14.9], ['Suco detox Leopoldina', 'Melancia, limão, gengibre e linhaça', 14.9],
+    ['Suco detox Villa Lobos', 'Laranja, beterraba e cenoura', 14.9], ['Suco detox Abacaxi Tropical', 'Abacaxi, hortelã, limão e água de coco', 14.9],
+    ['Suco detox Green Love', 'Couve, gengibre e laranja', 14.9], ['Suco detox Medicina', 'Laranja, cenoura, maçã verde, limão e gengibre', 14.9],
+    ['Suco de 1 fruta', '19 sabores, de abacate a uva', 8], ['Suco de 2 frutas', '', 11], ['Suco com leite', '1 ou 2 frutas', 'R$ 11 · R$ 13'],
+    ['Açaí simples 350 g', 'Com granola', 15.5], ['Açaí com 1 fruta 350 g', 'Com granola', 17.5], ['Açaí completo 350 g', 'Frutas, leite condensado, leite em pó, mel e Nutella', 20]
+  ]},
+  'Frutos do mar': { nota: 'Pratos à la carte, em dois tamanhos (P1 e P2).', itens: [
+    ['Gratinado de frutos do mar', 'Com arroz, pimentões e queijos, e farofa crocante', p1p2(139, 258)],
+    ['Sinfonia marítima', 'Frutos do mar ao molho de coco, com arroz, farofa e torrada', p1p2(135, 245)],
+    ['Moqueca de peixe', 'Ao molho de coco, com arroz branco e farofa crocante', p1p2(109, 199)],
+    ['Peixe empanado na castanha', 'Com arroz de coco e purê de jerimum', p1p2(89, 169)],
+    ['Camarão ao quiabo e cúrcuma', 'Com gengibre e pimenta-de-cheiro, arroz de coco e castanha', p1p2(95, 179)],
+    ['Polvo mediterrâneo', 'Tentáculos no azeite com alho-poró, alecrim, laranja e tomate-cereja, sobre batatas ao murro', p1p2(129, 225)],
+    ['Arrumadinho de frutos do mar', 'Empanados com feijão-fradinho, vinagrete de banana-da-terra, farofa de dendê e aioli', p1p2(119, 195)],
+    ['Lagosta Terramar', 'Grelhada na manteiga de garrafa, com risoto de cogumelo Paris gratinado', p1p2(179, 319)],
+    ['Lá Gostosura', 'Picadinho de lagosta na manteiga de ervas, chutney de manga e tempurá de couve', p1p2(159, 290)],
+    ['Bobó de camarão', 'Com arroz de coco e farofa crocante', p1p2(99, 179)],
+    ['Camarão ao creme de abóbora', 'Com arroz de cheiro e farofa crocante', p1p2(95, 169)],
+    ['Bacalhau gratinado', 'Cremoso à moda do chef, com arroz branco e farofa de banana', p1p2(110, 190)]
+  ]},
+  'Grelhados e risotos': { nota: 'Grelhados com arroz, feijão, fritas e salada, salvo indicação.', itens: [
+    ['Filé de frango', '', 22.9], ['Bisteca', '', 20.9], ['Calabresa', '', 20.9], ['Fígado acebolado', '', 20.9],
+    ['Filé de peixe', 'Arroz à grega, purê e salada', 27.9], ['Contrafilé', '', 35.9], ['Contrafilé a cavalo', 'Com ovo', 40.9],
+    ['Filé-mignon', '', 51.9], ['Picanha', '', 55.9], ['Salmão', 'Arroz à grega, legumes e purê', 53.9],
+    ['Risoto + grelhado', 'Monte o seu: shitake, caprese, limão-siciliano, alho-poró ou abobrinha, com frango, saint peter, contrafilé, mignon, picanha ou salmão', 'R$ 26,90 a 51,90'],
+    ['Risoto de camarão', '', 49.9], ['Risoto de frutos do mar', '', 49.9]
+  ]},
+  'Parmegianas e milanesas': { itens: [
+    ['Parmegiana de frango', 'Arroz, fritas e salada', 35.9], ['Parmegiana de contrafilé', 'Arroz, fritas e salada', 42], ['Parmegiana de filé-mignon', 'Arroz, fritas e salada', 58.9],
+    ['Milanesa de frango', 'Arroz, feijão, fritas e salada', 31.9], ['Milanesa de peixe', 'Arroz, feijão, fritas e salada', 33.9],
+    ['Milanesa de contrafilé', 'Arroz, feijão, fritas e salada', 39.9], ['Milanesa de filé-mignon', 'Arroz, feijão, fritas e salada mista', 55.9]
+  ]},
+  'Saladas e omeletes': { itens: [
+    ['Salada Terramar', 'Burrata, tomate confit, rúcula e camarões no pesto, com torradinhas', 35], ['Salada Ilha Bela', 'Folhas, palmito, frango, croutons e molho Caesar', 31.9],
+    ['Salada Guarujá', 'Folhas, cogumelos, queijo branco, cenoura e molho de manga', 23.9],
+    ['Omelete mista', 'Só omelete ou com arroz, feijão, fritas e salada', 'R$ 18,90 · 27,90'], ['Omelete light', 'Peito de peru e queijo branco', 'R$ 19,90 · 29,90'],
+    ['Omelete vegetariana', 'Legumes, cogumelos, tomate e cebola', 'R$ 21,90 · 31,90']
+  ]},
+  'Hambúrgueres e lanches': { nota: 'Hambúrgueres artesanais, todos com fritas.', itens: [
+    ['Burguer Cruzeiro', 'Picles, rúcula e queijo no brioche', 24.9], ['Burguer Imperatriz', 'Cebola caramelizada, cheddar cremoso e barbecue', 26.9],
+    ['Burguer Leopoldina', 'Maionese da casa, Catupiry, bacon, tomate e alface', 28.9], ['Burguer Trípoli', 'Queijo minas, alface, tomate e maionese da casa', 28],
+    ['Burguer do Garde', 'Bacon, alface, tomate, cheddar e ovo no brioche', 30], ['Burguer da Terra', 'Picanha, bacon, cheddar, alface e onion rings', 35.9],
+    ['Burguer do Mar', 'Hambúrguer de peixe, sour cream, onion rings, alface e tomate', 31.9], ['Burguer vegano', '', 26.9],
+    ['Beirute Dona Leopoldina', 'Picanha, queijo, presunto, ovo, bacon, alface, tomate e maionese', 42], ['Beirute Noronha', 'Filé-mignon, queijo, presunto, ovo, alface e tomate', 42],
+    ['Beirute Terramar', 'Peixe crocante, coalhada, queijo branco, rúcula e tomate seco', 38], ['Beirute Lapa', 'Filé de frango, queijo, presunto, ovo e bacon', 32.9],
+    ['Sanduíches tradicionais', 'Misto, bauru, americano, natural, provolone…', 'R$ 10 a 24']
+  ]},
+  'Porções': { itens: [
+    ['Casquinha de siri', 'Unidade', 29.9], ['Mini pastéis', '12 unidades: queijo, carne, pizza e camarão', 40], ['Bolinho de bacalhau', '12 unidades', 48],
+    ['Bolinho de carne seca', '12 unidades', 45], ['Mandioca frita', '', 31], ['Batata frita', '', 34], ['Batata com cheddar e bacon', '', 45],
+    ['Frango à passarinho', '', 45.5], ['Isca de frango à milanesa', '', 44], ['Calabresa acebolada na tábua', '', 39.9], ['Torresmo de rolo', '', 39.9],
+    ['Provolone à milanesa', '', 59.9], ['Isca de peixe com anéis de cebola', '', 65], ['Contrafilé acebolado na tábua', '', 62.9],
+    ['Carne seca com mandioca', '', 75], ['Camarão alho e óleo', '', 75], ['Camarão à milanesa com anéis de cebola', '', 85],
+    ['Picanha com fritas na tábua', '', 79.9], ['Filé-mignon com fritas na tábua', '', 85], ['Filé-mignon com provolone em cubos', '', 105],
+    ['Caldinhos', 'Feijão, peixe, feijoada ou camarão', 12]
+  ]},
+  'Drinks e caipirinhas': { itens: [
+    ['Caipirinha tradicional', 'Pinga, Smirnoff, cachaça especial, saquê ou Absolut', 'R$ 21,90 a 25,90'],
+    ['Caipirinhas da casa', 'Arretado, Mineirinha, Recifense, Rapariga, Três Limões…', 'Consulte'], ['Caipilé', 'Vodka, picolé e frutas', 28],
+    ['Terra Mar', 'Vodka, curaçau blue e suco de manga', 26], ['Moscow Mule', '', 32], ['Mojito', '', 24.9], ['Aperol Spritz', '', 27],
+    ['Negroni', '', 29.9], ['Piña Colada', '', 27.3], ['Jack Mint', '', 28.9], ['Margarita', '', 26.9], ['Espanhola', 'Vinho, abacaxi e leite condensado', 17.9],
+    ['Gins da casa', 'Tropical, Pitaya, Gin da Lapa, Gin da Terra…', 'a partir de R$ 26']
+  ]},
+  'Cervejas': { itens: [
+    ['Chopp Brahma 300 ml', 'Caneca', 13.9], ['Long neck', 'Heineken, Corona, Stella, Budweiser, Beck’s…', 'R$ 10 a 13'],
+    ['600 ml', 'Heineken, Original, Spaten, Serramalte, Stella…', 'R$ 13,90 a 18'],
+    ['Artesanais Paulistânia', 'Marco Zero, Trem das Onze, Viaduto do Chá, Desvairada…', 'R$ 16,90 a 21,90'], ['Erdinger 500 ml', 'Tradicional ou Dunkel', 29.9]
+  ]},
+  'Sobremesas': { itens: [
+    ['Cocada Terra Mar', 'Cocada cremosa com sorvete de coco, farofa de coco e raspas de limão', 24.9],
+    ['Taça da felicidade', 'Nutella, sorvete, chantilly, calda de chocolate, Kit Kat e Oreo', 34.9],
+    ['Cheesecake', 'Calda de maracujá ou frutas vermelhas', 25.9], ['Petit gâteau', 'Com sorvete de creme', 19],
+    ['Abacaxi grelhado com sorvete', '', 19], ['Pudim', 'Com crisp de açúcar', 9]
+  ]},
+  'Kids': { itens: [
+    ['Massa ao sugo', '', 23], ['Filezinho de frango', 'Arroz, feijão, fritas ou salada', 24.9], ['Filezinho de mignon', 'Arroz, feijão, fritas ou salada', 31.9]
+  ]}
+};
+
+const itemHtml = ([n, d, p]) => `<div class="item"><div><h3>${n}</h3>${d ? `<p>${d}</p>` : ''}</div><span class="price">${brl(p)}</span></div>`;
+const tabs = document.getElementById('tabs');
+function showCategory(cat) {
+  tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+  document.getElementById('menu-note').textContent = CARDAPIO[cat].nota || '';
+  document.getElementById('menu').innerHTML = CARDAPIO[cat].itens.map(itemHtml).join('');
+}
+tabs.innerHTML = Object.keys(CARDAPIO).map(c => `<button class="tab" data-cat="${c}">${c}</button>`).join('');
+tabs.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showCategory(t.dataset.cat)));
+document.querySelectorAll('a[data-cat]').forEach(a => a.addEventListener('click', () => showCategory(a.dataset.cat)));
+
+const now = new Date(), today = now.getDay(), minutes = now.getHours() * 60 + now.getMinutes();
+
+// "Agora" no período do dia e cardápio aberto na categoria que combina com a hora
+let periodo = null;
+document.querySelectorAll('.period').forEach(p => {
+  if (today !== 0 && minutes >= +p.dataset.from && minutes < +p.dataset.to) { p.classList.add('now'); periodo = p; }
+});
+showCategory(periodo && periodo.dataset.from === '360' ? 'Café da manhã' : periodo && periodo.dataset.from === '1020' ? 'Porções' : 'Frutos do mar');
+
+// Prato do dia
+const days = document.getElementById('days');
+const serviceDay = today === 0 ? 1 : today;
+function showDay(d) {
+  days.querySelectorAll('.day').forEach(b => b.classList.toggle('active', +b.dataset.d === d));
+  document.getElementById('day-list').innerHTML = PRATO_DO_DIA[d].map(([n, desc, p]) =>
+    `<div class="day-item"><div><h3>${n}</h3>${desc ? `<p>${desc}</p>` : ''}</div><span class="price">${brl(p)}</span></div>`).join('');
+  document.getElementById('day-note').textContent = d === today ? 'Esse é o prato de hoje.' : today === 0 && d === 1 ? 'Domingo a casa fecha. Esses são os pratos de segunda.' : '';
+}
+days.innerHTML = Object.entries(DIAS).map(([d, nome]) => `<button class="day" data-d="${d}">${nome}${+d === today ? ' · hoje' : ''}</button>`).join('');
+days.querySelectorAll('.day').forEach(b => b.addEventListener('click', () => showDay(+b.dataset.d)));
+showDay(serviceDay);
+
+// Horários e aviso de aberto/fechado
+const HORARIOS = [[1, 'Segunda', 360, 1380], [2, 'Terça', 360, 1380], [3, 'Quarta', 360, 1380], [4, 'Quinta', 360, 1380], [5, 'Sexta', 360, 1380], [6, 'Sábado', 360, 1380], [0, 'Domingo', null, null]];
+const fmt = m => `${Math.floor(m / 60)}h${m % 60 ? String(m % 60).padStart(2, '0') : ''}`;
+const hoursOf = d => HORARIOS.find(h => h[0] === d);
+document.getElementById('hours').innerHTML = HORARIOS.map(([d, dia, a, f]) =>
+  `<li class="${d === today ? 'today' : ''}"><span>${dia}</span><span>${a === null ? 'Fechado' : `${fmt(a)} às ${fmt(f)}`}</span></li>`).join('');
+const [, , abre, fecha] = hoursOf(today);
+const status = document.getElementById('status');
+if (abre !== null && minutes >= abre && minutes < fecha) {
+  status.textContent = `Aberto agora · fecha às ${fmt(fecha)}`;
+  status.classList.add('open');
+} else {
+  let next;
+  if (abre !== null && minutes < abre) next = `abre hoje às ${fmt(abre)}`;
+  else for (let i = 1; i <= 7; i++) {
+    const [, dia, a] = hoursOf((today + i) % 7);
+    if (a !== null) { next = `abre ${i === 1 ? 'amanhã' : dia.toLowerCase()} às ${fmt(a)}`; break; }
+  }
+  status.textContent = `Fechado agora · ${next}`;
+}
+
+const menuBtn = document.querySelector('.menu-btn');
+const navList = document.querySelector('.nav ul');
+menuBtn.addEventListener('click', () => navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+</script>
+</body>
+</html>
