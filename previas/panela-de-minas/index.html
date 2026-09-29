@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panela de Minas | Restaurante Mineiro</title>
+<meta name="description" content="Restaurante mineiro na Vila Leopoldina: picanha na pedra, torresmo pururuca, tutu, feijão tropeiro e marmitex. Pratos à la carte que servem muito bem duas pessoas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Libre+Baskerville:wght@700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --wine: #7a1f22; --wine-dark: #58151a; --clay: #b5652b; --cream: #fbf6ec; --paper: #fffdf8; --wood: #3b2618;
+    --ink: #2b1c14; --muted: #6f5d51; --line: #e4d8c4; --gold: #d99a2b; --green: #25d366;
+    --check: repeating-conic-gradient(#8a2a2d 0 25%, #f4eadb 0 50%) 0 0/28px 28px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  h1, h2 { font-family: 'Libre Baskerville', serif; font-weight: 700; line-height: 1.12; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .kicker { display: inline-block; font-size: .76rem; font-weight: 900; letter-spacing: 2.5px; text-transform: uppercase; color: var(--clay); margin-bottom: 10px; }
+  .checks { height: 14px; background: var(--check); background-size: 14px 14px; }
+
+  .preview-bar { background: var(--wood); color: #e8d9c4; font-size: .8rem; text-align: center; padding: 8px 16px; }
+  .preview-bar a { color: var(--gold); font-weight: 900; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(251,246,236,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 78px; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .pot { width: 46px; height: 38px; position: relative; }
+  .pot::before { content: ''; position: absolute; left: 4px; right: 4px; bottom: 0; height: 28px; background: var(--wood); border-radius: 4px 4px 18px 18px; }
+  .pot::after { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 6px; background: var(--wood); border-radius: 3px; }
+  .logo strong { display: block; font-family: 'Rye', serif; font-weight: 400; font-size: 1.55rem; color: var(--wine); line-height: 1; }
+  .logo small { font-size: .68rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .nav ul { display: flex; gap: 24px; list-style: none; font-weight: 900; font-size: .92rem; }
+  .nav ul a:hover { color: var(--wine); }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.7rem; cursor: pointer; color: var(--ink); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 8px; font-weight: 900; transition: transform .15s, background .15s; border: 0; cursor: pointer; font-family: inherit; font-size: .98rem; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-wine { background: var(--wine); color: #fff; }
+  .btn-wine:hover { background: var(--wine-dark); }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-line { border: 2px solid rgba(255,255,255,.7); color: #fff; }
+  .btn-sm { padding: 10px 18px; font-size: .9rem; }
+
+  .hero { position: relative; overflow: hidden; color: #fff; background: var(--wood); background-image: radial-gradient(circle at 85% 20%, rgba(217,154,43,.18), transparent 45%); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; padding: 64px 0 72px; }
+  .hero .content { position: relative; }
+  .hero-photo { position: relative; justify-self: center; width: 100%; max-width: 470px; }
+  .hero-photo img { width: 100%; aspect-ratio: 4/4.4; object-fit: cover; border-radius: 16px; border: 8px solid #fffdf8; box-shadow: 0 24px 50px rgba(0,0,0,.45); transform: rotate(2deg); }
+  .hero-photo .tag-price { position: absolute; left: -18px; bottom: 28px; background: var(--gold); color: var(--ink); font-weight: 900; padding: 10px 16px; border-radius: 10px; box-shadow: 0 10px 24px rgba(0,0,0,.3); }
+  .hero-photo .tag-price small { display: block; font-weight: 700; font-size: .75rem; }
+  .hero .brand { font-family: 'Rye', serif; font-size: clamp(3rem, 8vw, 5.6rem); line-height: 1; color: #fff; display: block; margin-bottom: 8px; }
+  .hero h1 { font-size: clamp(1.4rem, 3vw, 2rem); color: var(--gold); margin-bottom: 18px; font-style: italic; }
+  .hero p { font-size: 1.1rem; color: #eee0d0; margin-bottom: 26px; max-width: 520px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .chip { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); padding: 7px 14px; border-radius: 999px; font-size: .86rem; font-weight: 700; }
+  .chip.status::before { content: '●'; margin-right: 6px; color: #ef4444; }
+  .chip.status.open::before { color: var(--green); }
+
+  section { padding: 84px 0; }
+  .title { text-align: center; margin-bottom: 42px; }
+  .title h2 { font-size: clamp(2rem, 4.6vw, 3rem); color: var(--wine); }
+  .title p { color: var(--muted); max-width: 600px; margin: 12px auto 0; }
+
+  .promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .promise div { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 26px; text-align: center; }
+  .promise .icon { font-size: 2.2rem; background: none; border: 0; padding: 0; border-radius: 0; }
+  .promise strong { display: block; font-family: 'Libre Baskerville'; color: var(--wine); font-size: 1.15rem; margin: 8px 0 4px; }
+  .promise span { color: var(--muted); font-size: .93rem; }
+
+  .dishes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .dish { background: var(--paper); border-radius: 18px; overflow: hidden; border: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; transition: transform .2s, box-shadow .2s; }
+  .dish:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(43,28,20,.14); }
+  .dish img { width: 100%; height: 100%; min-height: 240px; object-fit: cover; }
+  .dish .body { padding: 22px; display: flex; flex-direction: column; }
+  .dish .tag { font-size: .7rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: var(--clay); }
+  .dish h3 { font-family: 'Libre Baskerville'; font-size: 1.2rem; color: var(--wine); margin: 4px 0 8px; }
+  .dish p { color: var(--muted); font-size: .92rem; flex: 1; }
+  .dish .price { font-weight: 900; font-size: 1.15rem; margin-top: 12px; }
+  .dish .price small { display: block; font-weight: 700; font-size: .75rem; color: var(--muted); }
+
+  .marmitex { background: var(--wine); color: #fff; }
+  .marmitex .title h2 { color: #fff; }
+  .marmitex .title p { color: #f0d6d0; }
+  .marmitex .kicker { color: var(--gold); }
+  .marm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .marm-grid img { border-radius: 18px; width: 100%; aspect-ratio: 1; object-fit: cover; border: 6px solid #fff; transform: rotate(-2deg); }
+  .marm-list { background: var(--paper); color: var(--ink); border-radius: 18px; padding: 26px 28px; }
+  .marm-list h3 { font-family: 'Rye', serif; font-weight: 400; color: var(--wine); font-size: 1.5rem; margin-bottom: 4px; }
+  .marm-list .from { color: var(--muted); margin-bottom: 14px; }
+  .marm-list li { list-style: none; display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: .95rem; }
+  .marm-list li span:last-child { font-weight: 900; color: var(--wine); white-space: nowrap; }
+  .marm-list .note { font-size: .85rem; color: var(--muted); margin-top: 14px; }
+
+  .menu { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 26px; justify-content: center; flex-wrap: wrap; }
+  .tab { flex: 0 0 auto; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--wine); background: none; color: var(--wine); font: 900 .86rem 'Lato'; cursor: pointer; }
+  .tab.active { background: var(--wine); color: #fff; }
+  .menu-note { text-align: center; color: var(--muted); font-size: .92rem; margin-bottom: 12px; min-height: 1em; }
+  .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+  .item { display: flex; justify-content: space-between; gap: 18px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+  .item h3 { font-size: .98rem; font-weight: 900; }
+  .item p { color: var(--muted); font-size: .86rem; margin-top: 2px; }
+  .item .price { font-weight: 900; color: var(--wine); white-space: nowrap; text-align: right; }
+  .half { text-align: center; background: #f6ecdc; border-radius: 12px; padding: 12px; margin-top: 22px; color: var(--ink); font-weight: 700; }
+
+  .place { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+  .place img { border-radius: 20px; width: 100%; aspect-ratio: 4/3.4; object-fit: cover; }
+  .place h2 { font-size: clamp(2rem, 4.4vw, 2.9rem); color: var(--wine); margin-bottom: 14px; }
+  .place p { color: var(--muted); margin-bottom: 12px; }
+
+  .info-wrap { background: #f3e9d9; }
+  .info { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; }
+  .info h3 { font-family: 'Libre Baskerville'; font-size: 1.4rem; color: var(--wine); margin-bottom: 8px; }
+  .info .block { margin-bottom: 26px; }
+  .hours { list-style: none; max-width: 380px; }
+  .hours li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .hours li.today { color: var(--wine); font-weight: 900; }
+  .info iframe { width: 100%; height: 100%; min-height: 400px; border: 0; border-radius: 18px; }
+
+  .cta { text-align: center; padding: 90px 0; }
+  .cta h2 { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--wine); margin-bottom: 12px; }
+  .cta p { color: var(--muted); margin-bottom: 26px; }
+
+  footer { background: var(--wood); color: #d9c7b0; text-align: center; padding: 32px 16px; font-size: .85rem; }
+  footer a { color: var(--gold); font-weight: 900; }
+
+  .whatsapp { position: fixed; right: 20px; bottom: 20px; z-index: 30; width: 60px; height: 60px; border-radius: 50%; background: var(--green); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); transition: transform .15s; }
+  .whatsapp:hover { transform: scale(1.08); }
+  .whatsapp svg { width: 32px; height: 32px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    .nav ul { display: none; position: absolute; top: 78px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--cream); border-bottom: 1px solid var(--line); }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 14px 16px; }
+    .nav .btn { display: none; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; padding: 44px 0 56px; }
+    .hero-photo { max-width: 360px; }
+    .hero-photo .tag-price { left: -6px; }
+    .dishes, .marm-grid, .place, .info, .menu-list { grid-template-columns: 1fr; }
+    .promise { grid-template-columns: 1fr; }
+    .tabs { justify-content: flex-start; flex-wrap: nowrap; }
+    section { padding: 66px 0; }
+  }
+  @media (max-width: 560px) {
+    .dish { grid-template-columns: 1fr; }
+    .dish img { aspect-ratio: 4/3; min-height: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">Prévia criada para o Panela de Minas por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>. Este ainda não é o site oficial do restaurante.</div>
+
+<header>
+  <nav class="container nav">
+    <a href="#" class="logo"><span class="pot"></span><span><strong>Panela de Minas</strong><small>Restaurante mineiro</small></span></a>
+    <button class="menu-btn" aria-label="Abrir menu">☰</button>
+    <ul>
+      <li><a href="#destaques">Destaques</a></li>
+      <li><a href="#marmitex">Marmitex</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#contato">Horários</a></li>
+    </ul>
+    <a class="btn btn-wine btn-sm wa" href="#" target="_blank">Reservar mesa</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="container hero-grid">
+  <div class="content">
+    <span class="brand">Panela de Minas</span>
+    <h1>O sabor de Minas na Vila Leopoldina</h1>
+    <p>Picanha na pedra, torresmo pururuca, tutu, feijão tropeiro e couve. Pratos fartos, que servem muito bem duas pessoas.</p>
+    <div class="actions">
+      <a class="btn btn-gold wa" href="#" target="_blank">Reservar pelo WhatsApp</a>
+      <a class="btn btn-line" href="#cardapio">Ver cardápio</a>
+    </div>
+    <div class="chips">
+      <span class="chip status" id="status">Horário</span>
+      <span class="chip">Aberto todos os dias</span>
+      <span class="chip">Aceitamos tickets e cartões</span>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="img/bife.jpg" alt="Filé-mignon grelhado com arroz, macarrão e batata sauté na frigideira">
+    <div class="tag-price">Filé-mignon grelhado<small>serve duas pessoas</small></div>
+  </div>
+  </div>
+</section>
+<div class="checks"></div>
+
+<section>
+  <div class="container promise">
+    <div><div class="icon">🍲</div><strong>Serve dois</strong><span>Todo prato à la carte serve muito bem duas pessoas. Quer meio prato? Sai por 65% do valor.</span></div>
+    <div><div class="icon">🪨</div><strong>Na pedra</strong><span>Picanha, contrafilé e picanha suína chegam chiando na pedra, direto pra mesa.</span></div>
+    <div><div class="icon">🥡</div><strong>Marmitex no balcão</strong><span>Comida mineira pra levar, a partir de R$ 20.</span></div>
+  </div>
+</section>
+
+<section id="destaques" style="padding-top:0">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Da nossa cozinha</span>
+      <h2>Os pratos da casa</h2>
+    </div>
+    <div class="dishes">
+      <article class="dish"><img src="img/picanha-pedra.jpg" alt="Picanha na pedra com alho frito" loading="lazy"><div class="body"><span class="tag">Na pedra</span><h3>Da Fazenda</h3><p>Picanha ao alho na pedra, com arroz, couve, fritas, farofa e vinagrete.</p><span class="price">R$ 255,90<small>serve duas pessoas</small></span></div></article>
+      <article class="dish"><img src="img/bife.jpg" alt="Bife grelhado com arroz, macarrão e batata sauté" loading="lazy"><div class="body"><span class="tag">Bovino</span><h3>Filé-mignon grelhado</h3><p>Grelhado no ponto, com arroz, macarrão e batata sauté.</p><span class="price">a partir de R$ 169,90<small>serve duas pessoas</small></span></div></article>
+      <article class="dish"><img src="img/peixe-camarao.jpg" alt="Filé de peixe ao molho de camarão com arroz, fritas e salada" loading="lazy"><div class="body"><span class="tag">Peixe</span><h3>Filé de peixe com molho de camarão</h3><p>Com arroz, batata sauté e salada completa.</p><span class="price">R$ 149,90<small>serve duas pessoas</small></span></div></article>
+      <article class="dish"><img src="img/prato-feito.jpg" alt="Prato com costela, arroz, feijão, farofa, fritas e ovo" loading="lazy"><div class="body"><span class="tag">Marmitex e executivos</span><h3>Costela bovina</h3><p>Com arroz, feijão, fritas e farofa. Comida de casa, no capricho.</p><span class="price">R$ 26,00<small>no marmitex</small></span></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="marmitex" class="marmitex">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Somente no balcão</span>
+      <h2>Marmitex mineiro</h2>
+      <p>Pra levar pro trabalho ou pra casa. São mais de 40 opções de frango, suíno e bovino.</p>
+    </div>
+    <div class="marm-grid">
+      <img src="img/prato-feito.jpg" alt="Prato feito mineiro" loading="lazy">
+      <div class="marm-list">
+        <h3>Os preferidos</h3>
+        <p class="from">A maioria sai por R$ 20</p>
+        <ul>
+          <li><span>Filé de frango à milanesa, arroz, feijão e fritas</span><span>R$ 20</span></li>
+          <li><span>Frango à passarinho, arroz, feijão, fritas e farofa</span><span>R$ 20</span></li>
+          <li><span>Linguiça, ovo e torresmo, com tutu e couve</span><span>R$ 20</span></li>
+          <li><span>Bisteca suína com feijão tropeiro e fritas</span><span>R$ 20</span></li>
+          <li><span>Costelinha suína com feijão tropeiro e batata sauté</span><span>R$ 25</span></li>
+          <li><span>Bife com arroz, feijão, fritas e farofa</span><span>R$ 28</span></li>
+          <li><span>Feijoada completa</span><span>R$ 38</span></li>
+        </ul>
+        <p class="note">Veja todas as opções na aba "Marmitex" do cardápio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cardapio" class="menu">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Cardápio completo</span>
+      <h2>Escolha sem pressa, sô</h2>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <p class="menu-note" id="menu-note"></p>
+    <div class="menu-list" id="menu"></div>
+    <p class="half">Todos os pratos à la carte servem muito bem duas pessoas · Meio prato: 65% do valor</p>
+  </div>
+</section>
+
+<section>
+  <div class="container place">
+    <img src="img/salao.jpg" alt="Salão com mesas de madeira, cadeiras com pelego e plantas" loading="lazy">
+    <div>
+      <span class="kicker">Nosso espaço</span>
+      <h2>Mesa de madeira e cadeira com pelego</h2>
+      <p>Salão iluminado, com mesas de madeira, plantas e as cadeiras cobertas de pelego, um aconchego de casa de fazenda no meio da Leopoldina.</p>
+      <p>Perfeito pro almoço em família no domingo ou pro almoço do dia a dia com a equipe do trabalho.</p>
+      <a class="btn btn-wine wa" href="#" target="_blank">Reservar mesa</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="info-wrap">
+  <div class="container info">
+    <div>
+      <div class="block">
+        <h3>Endereço</h3>
+        <p>Rua Baumann, 319<br>Vila Leopoldina, São Paulo, SP</p>
+      </div>
+      <div class="block">
+        <h3>Horários</h3>
+        <ul class="hours" id="hours"></ul>
+      </div>
+      <div class="block">
+        <h3>Reservas e pedidos</h3>
+        <p style="margin-bottom:6px">WhatsApp (11) 98901-2486 · Telefone (11) 3835-7803</p>
+        <p style="margin-bottom:16px">Também estamos no iFood.</p>
+        <a class="btn btn-wine wa" href="#" target="_blank">Falar no WhatsApp</a>
+      </div>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Rua+Baumann,+319+-+Vila+Leopoldina,+S%C3%A3o+Paulo,+05318-000&output=embed" loading="lazy" title="Mapa do Panela de Minas"></iframe>
+  </div>
+</section>
+
+<div class="checks"></div>
+<section class="cta">
+  <div class="container">
+    <h2>Bão demais, sô!</h2>
+    <p>Chama no WhatsApp pra reservar sua mesa.</p>
+    <a class="btn btn-wine wa" href="#" target="_blank">Reservar agora</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Panela de Minas · Restaurante Mineiro · Vila Leopoldina, São Paulo<br>
+  Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
+</footer>
+
+<a class="whatsapp wa" href="#" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+// WhatsApp que aparece no site atual deles (Wix).
+const WHATSAPP = '5511989012486';
+document.querySelectorAll('.wa').forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Vi o site e gostaria de reservar uma mesa.')}`);
+
+const brl = v => typeof v === 'number' ? 'R$ ' + v.toFixed(2).replace('.', ',') : v;
+
+const CARDAPIO = {
+  'Bovino': { nota: 'À la carte. Os pratos na pedra chegam chiando à mesa.', itens: [
+    ['Da Fazenda', 'Picanha ao alho na pedra, arroz, couve, fritas, farofa e vinagrete', 255.9],
+    ['Picanha italiana', 'Picanha ao alho e pimenta na pedra, arroz, feijão, fritas, farofa, vinagrete e couve', 255.9],
+    ['Picanha', 'Na pedra, com arroz, feijão e salada completa', 255.9],
+    ['Picanha inteira', 'Fatiada na pedra, com arroz, feijão tropeiro, couve e fritas. Não é servida meia.', 299.9],
+    ['Contrafilé à parmegiana', 'Arroz e fritas', 169.9], ['Contrafilé italiano', 'Ao alho e pimenta na pedra, com acompanhamentos', 157.9],
+    ['Contrafilé à brasileira', 'Na pedra, arroz, feijão, fritas, farofa, couve e vinagrete', 157.9], ['Contrafilé', 'Na pedra, arroz, feijão e salada completa', 157.9],
+    ['Strogonoff de filé-mignon', 'Arroz e fritas', 169.9], ['Filé-mignon à parmegiana', 'Arroz e fritas', 194.9],
+    ['Filé-mignon com risoto', 'Risoto de queijo e batata sauté', 169.9], ['Filé madeira', 'Filé-mignon ao molho madeira, arroz e purê', 169.9],
+    ['Moda de Minas', 'Filé-mignon, arroz, legumes, banana à milanesa e ovo', 169.9],
+    ['Bom de Minas', 'Filé-mignon, arroz, feijão tropeiro, torresmo pururuca, fritas e couve', 169.9],
+    ['Moda da Casa', 'Filé-mignon, arroz, farofa, bacon, ervilha, ovo e fritas', 169.9],
+    ['Vaca atolada', 'Costela ensopada com mandioca, arroz, polenta frita e couve', 149.9], ['Rabada', 'Arroz, feijão, fritas, farofa e couve', 149.9],
+    ['Guisado de Minas', 'Carne de sol desfiada, arroz, feijão tropeiro, mandioca, couve e banana', 149.9],
+    ['Carne de sol na manteiga', 'Com mandioca, arroz, feijão tropeiro e couve', 149.9]
+  ]},
+  'Suíno': { itens: [
+    ['Panela de Minas', 'Pernil, linguiça, mandioca, arroz, tutu e couve', 153.9],
+    ['Delícia de Minas', 'Pernil, arroz, tutu, couve, torresmo pururuca, ovos e banana à milanesa', 153.9],
+    ['Macarronada à mineira', 'Pernil, macarronada, tutu, mandioca e polenta frita', 153.9],
+    ['Pernil à brasileira', 'Arroz, feijão, fritas, couve, farofa e vinagrete', 153.9], ['Pernil à moda da casa', 'Arroz, feijão, fritas, couve e mandioca', 153.9],
+    ['Mexido mineiro', 'Carne de sol, pernil, arroz, feijão tropeiro, couve, ovo, banana e torresmo pururuca', 153.9],
+    ['Lombo à mineira', 'Lombo grelhado, arroz, tutu, torresmo pururuca e couve', 153.9], ['Lombo à brasileira', 'Arroz, feijão, fritas, couve, farofa e vinagrete', 153.9],
+    ['Lombo ao molho de champignon', 'Arroz, purê e couve', 153.9],
+    ['Tradição de Minas', 'Lombo, arroz, feijão tropeiro, torresmo pururuca, couve e banana', 153.9],
+    ['Costela à mineira', 'Costelinha, arroz, feijão tropeiro, torresmo pururuca, polenta frita e couve', 153.9],
+    ['Silêncio de Minas', 'Costelinha ensopada com quiabo, arroz, polenta frita e couve', 153.9],
+    ['Picanha suína', 'Na pedra, com arroz, tutu, couve e mandioca', 153.9], ['Joelho de porco à pururuca', 'Arroz, salada de batata e couve', 159.9],
+    ['Leitão à pururuca', 'Arroz, feijão tropeiro, torresmo, mandioca, couve e fritas', 199.9],
+    ['Feijoada completa', 'Arroz, couve, farofa, torresmo pururuca, banana à milanesa e linguiça grelhada', 139.9], ['Feijoada completa média', '', 95.9]
+  ]},
+  'Frango': { itens: [
+    ['Filé de frango à parmegiana', 'Arroz, feijão e batata frita', 139.9], ['Frango à moda', 'Gratinado com queijo, arroz, fritas, pastel, molho tártaro e bacon', 139.9],
+    ['Frango à suíça', 'Gratinado com molho branco, presunto e queijo, arroz e fritas', 139.9], ['Frango à brasileira', 'Arroz, feijão, fritas, farofa, vinagrete e couve', 139.9],
+    ['Tropeiro', 'Filé de frango, arroz, feijão tropeiro, couve e mandioca', 139.9], ['Frango à passarinho', 'Arroz, feijão, fritas, polenta frita e molho tártaro', 129.9],
+    ['Filé de frango à milanesa', 'Arroz, feijão, salada de maionese e farofa', 129.9], ['Strogonoff de frango', 'Arroz e batata frita', 129.9],
+    ['Galinha à mineira', 'Ensopada com macarrão, arroz, feijão, polenta frita e couve', 129.9],
+    ['Sabor de Minas', 'Frango ensopado com quiabo, arroz, torresmo pururuca, couve e polenta', 129.9],
+    ['Mineirinho', 'Frango ao molho madeira, arroz, fritas e farofa', 129.9], ['Galinha caipira', 'Na panela de pedra, com arroz, pirão e feijão tropeiro', 129.9],
+    ['Filé de frango com risoto', 'Risoto de queijo e batata sauté', 129.9]
+  ]},
+  'Peixe, sopas e saladas': { itens: [
+    ['Filé de peixe com molho de camarão', 'Arroz, batata sauté e salada completa', 149.9], ['Salmão ao molho de champignon', 'Arroz e legumes', 169.9],
+    ['Salmão ao molho de camarão', 'Arroz e batata sauté', 169.9],
+    ['Original de Minas', 'Canjica com costela', 65.9], ['Bambá de couve com costelinha', '', 65.9], ['Sopa de legumes com frango desfiado', '', 65.9], ['Canja', '', 65.9],
+    ['Salada completa', 'Alface, tomate, ervilha, palmito, cebola, cenoura, frios e ovo', 32.9], ['Salada mista', '', 26.9], ['Salada simples', 'Alface, tomate e cebola', 16.9]
+  ]},
+  'Marmitex': { nota: 'Somente no balcão.', itens: [
+    ['Filé de frango à milanesa', 'Arroz, feijão e fritas (ou macarrão e batata sauté)', 20], ['Filé de frango grelhado', 'Arroz, feijão e fritas', 20],
+    ['Frango ao molho', 'Com purê e farofa, ou macarrão e polenta', 20], ['Galinha', 'Com fritas e farofa, ou macarrão e polenta', 20],
+    ['Frango assado', 'Com fritas e farofa, ou macarrão, tutu e purê', 20], ['Frango à passarinho', '', 20], ['Filé de peixe', 'Arroz, feijão, purê e farofa', 23],
+    ['Mini strogonoff de frango', 'Arroz e fritas', 26], ['Filé de frango à parmegiana', 'Arroz, feijão e fritas', 26],
+    ['Linguiça', 'Com macarrão e fritas, ou fritas e farofa', 20], ['Linguiça, ovo e torresmo', 'Arroz, tutu e couve', 20], ['Calabresa acebolada', '', 23],
+    ['Bife de pernil', '', 20], ['Bisteca suína', 'Com feijão tropeiro e fritas', 20], ['Lombo grelhado', 'Com tutu, couve e farofa', 20], ['Lombo à milanesa', '', 20],
+    ['Pernil', '', 20], ['Pernil acebolado', 'Com macarrão e batata sauté', 20], ['Costelinha suína', 'Com feijão tropeiro e batata sauté, ou tutu e polenta', 25],
+    ['Feijoada', 'Arroz, couve, torresmo, farofa, linguiça e banana à milanesa', 38],
+    ['Espetinho misto', 'Carne, frango e linguiça, arroz, feijão, fritas e farofa', 20], ['Mini strogonoff de carne', '', 30],
+    ['Bife', 'Com macarrão e batata sauté, fritas e farofa, ou tropeiro e fritas', 28], ['Bife à parmegiana', '', 30],
+    ['Costela bovina', 'Com fritas e farofa, ou macarrão e polenta', 26], ['Rabada', '', 26]
+  ]},
+  'Sobremesas': { itens: [
+    ['Arroz doce', '', 10], ['Doce de leite', '', 10], ['Doce de leite com coco', '', 10], ['Cocada cremosa', '', 10], ['Ambrosia', '', 12], ['Pudim', '', 12], ['Café expresso', '', 5]
+  ]}
+};
+const tabs = document.getElementById('tabs');
+function showCategory(cat) {
+  tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+  document.getElementById('menu-note').textContent = CARDAPIO[cat].nota || '';
+  document.getElementById('menu').innerHTML = CARDAPIO[cat].itens.map(([n, d, p]) =>
+    `<div class="item"><div><h3>${n}</h3>${d ? `<p>${d}</p>` : ''}</div><span class="price">${brl(p)}</span></div>`).join('');
+}
+tabs.innerHTML = Object.keys(CARDAPIO).map(c => `<button class="tab" data-cat="${c}">${c}</button>`).join('');
+tabs.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showCategory(t.dataset.cat)));
+showCategory('Bovino');
+
+// Horário do Google Maps (11h às 21h todos os dias)
+const HORARIOS = [[1, 'Segunda'], [2, 'Terça'], [3, 'Quarta'], [4, 'Quinta'], [5, 'Sexta'], [6, 'Sábado'], [0, 'Domingo']].map(([d, n]) => [d, n, 660, 1260]);
+const fmt = m => `${Math.floor(m / 60)}h${m % 60 ? String(m % 60).padStart(2, '0') : ''}`;
+const now = new Date(), today = now.getDay(), minutes = now.getHours() * 60 + now.getMinutes();
+document.getElementById('hours').innerHTML = HORARIOS.map(([d, dia, a, f]) =>
+  `<li class="${d === today ? 'today' : ''}"><span>${dia}</span><span>${fmt(a)} às ${fmt(f)}</span></li>`).join('');
+const status = document.getElementById('status');
+if (minutes >= 660 && minutes < 1260) { status.textContent = 'Aberto agora · fecha às 21h'; status.classList.add('open'); }
+else status.textContent = `Fechado agora · abre ${minutes < 660 ? 'hoje' : 'amanhã'} às 11h`;
+
+const menuBtn = document.querySelector('.menu-btn');
+const navList = document.querySelector('.nav ul');
+menuBtn.addEventListener('click', () => navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+</script>
+</body>
+</html>
