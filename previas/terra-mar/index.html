@@ -317,9 +317,9 @@
       </div>
       <div class="block">
         <h3>Delivery e reservas</h3>
-        <p style="margin-bottom:6px">WhatsApp (11) 91000-6569 · Telefone (11) 2614-2460</p>
+        <p style="margin-bottom:6px">Pedidos e reservas pelo Direct do Instagram</p>
         <p style="margin-bottom:16px">Instagram @oficialterramar</p>
-        <a class="btn btn-coral wa" data-msg="delivery" href="#" target="_blank">Pedir pelo WhatsApp</a>
+        <a class="btn btn-coral wa" data-msg="delivery" href="#" target="_blank">Chamar no Instagram</a>
       </div>
     </div>
     <iframe src="https://www.google.com/maps?q=Av.+Imperatriz+Leopoldina,+553+-+Vila+Leopoldina,+S%C3%A3o+Paulo,+05089-001&output=embed" loading="lazy" title="Mapa do Terra Mar"></iframe>
@@ -329,7 +329,7 @@
 <section class="cta">
   <div class="container">
     <h2>Bateu a fome ou a sede?</h2>
-    <p>Pede no WhatsApp que a gente leva, ou reserva sua mesa e vem pra cá.</p>
+    <p>Chama no Instagram que a gente leva, ou reserva sua mesa e vem pra cá.</p>
     <a class="btn btn-coral wa" data-msg="delivery" href="#" target="_blank">Pedir delivery</a>
   </div>
 </section>
@@ -339,15 +339,15 @@
   Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
 </footer>
 
-<a class="whatsapp wa" data-msg="delivery" href="#" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+<a class="whatsapp wa" data-msg="delivery" href="#" target="_blank" aria-label="Instagram" style="background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af)">
+  <svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.2 16 2.1c-1.6-.1-6.4-.1-8 0-1.6.1-3 .4-4.2 1.6S2.2 6.4 2.1 8c-.1 1.6-.1 6.4 0 8 .1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.6.1-6.4 0-8zm-2.1 9.9a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.3 3.3 0 0 1 6.6 4.7C7.9 4.2 10.9 4.3 12 4.3s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg>
 </a>
 
 <script>
-// WhatsApp de delivery e reservas, informado no cardápio da casa.
-const WHATSAPP = '5511910006569';
+// Os telefones do Google e do cardápio não são da casa: os botões levam pro Direct do Instagram.
+const INSTAGRAM = 'oficialterramar';
 const MSGS = { reserva: 'Olá! Vi o site e gostaria de reservar uma mesa.', delivery: 'Olá! Vi o site e gostaria de fazer um pedido.' };
-document.querySelectorAll('.wa').forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MSGS[a.dataset.msg])}`);
+document.querySelectorAll('.wa').forEach(a => a.href = `https://ig.me/m/${INSTAGRAM}`);
 
 const brl = v => typeof v === 'number' ? 'R$ ' + v.toFixed(2).replace('.', ',') : v;
 const p1p2 = (a, b) => `P1 ${brl(a)} · P2 ${brl(b)}`;
