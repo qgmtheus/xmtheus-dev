@@ -180,7 +180,7 @@
     <h1>O sabor de Minas na Vila Leopoldina</h1>
     <p>Picanha na pedra, torresmo pururuca, tutu, feijão tropeiro e couve. Pratos fartos, que servem muito bem duas pessoas.</p>
     <div class="actions">
-      <a class="btn btn-gold wa" href="#" target="_blank">Reservar pelo WhatsApp</a>
+      <a class="btn btn-gold wa" href="#" target="_blank">Ligar e reservar</a>
       <a class="btn btn-line" href="#cardapio">Ver cardápio</a>
     </div>
     <div class="chips">
@@ -286,9 +286,9 @@
       </div>
       <div class="block">
         <h3>Reservas e pedidos</h3>
-        <p style="margin-bottom:6px">WhatsApp (11) 98901-2486 · Telefone (11) 3835-7803</p>
+        <p style="margin-bottom:6px">Telefone (11) 3835-7803</p>
         <p style="margin-bottom:16px">Também estamos no iFood.</p>
-        <a class="btn btn-wine wa" href="#" target="_blank">Falar no WhatsApp</a>
+        <a class="btn btn-wine wa" href="#" target="_blank">Ligar: (11) 3835-7803</a>
       </div>
     </div>
     <iframe src="https://www.google.com/maps?q=Rua+Baumann,+319+-+Vila+Leopoldina,+S%C3%A3o+Paulo,+05318-000&output=embed" loading="lazy" title="Mapa do Panela de Minas"></iframe>
@@ -299,7 +299,7 @@
 <section class="cta">
   <div class="container">
     <h2>Bão demais, sô!</h2>
-    <p>Chama no WhatsApp pra reservar sua mesa.</p>
+    <p>Liga pra gente e reserva sua mesa.</p>
     <a class="btn btn-wine wa" href="#" target="_blank">Reservar agora</a>
   </div>
 </section>
@@ -309,14 +309,14 @@
   Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
 </footer>
 
-<a class="whatsapp wa" href="#" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+<a class="whatsapp wa" href="#" target="_blank" aria-label="Ligar para o restaurante" style="background:var(--wine)">
+  <svg viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
 </a>
 
 <script>
-// WhatsApp que aparece no site atual deles (Wix).
-const WHATSAPP = '5511989012486';
-document.querySelectorAll('.wa').forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Vi o site e gostaria de reservar uma mesa.')}`);
+// O WhatsApp do site antigo não existe mais e o fixo não tem WhatsApp: os botões ligam pro restaurante.
+const TELEFONE = '+551138357803';
+document.querySelectorAll('.wa').forEach(a => { a.href = `tel:${TELEFONE}`; a.removeAttribute('target'); });
 
 const brl = v => typeof v === 'number' ? 'R$ ' + v.toFixed(2).replace('.', ',') : v;
 
