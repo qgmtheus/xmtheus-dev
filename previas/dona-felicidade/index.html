@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Dona Felicidade | Bar e Restaurante</title>
+<meta name="description" content="Bar e restaurante português na Vila Romana desde os tempos da mercearia da Pompeia. Bacalhau ao forno, feijoada, carnes na brasa e coisas da terrinha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1d4f91; --blue-dark: #0f2f5c; --blue-soft: #e8eef8; --teal: #2b6b64;
+    --cream: #fbf8f2; --paper: #ffffff; --ink: #1c2330; --muted: #5e6675; --line: #e3ddd1;
+    --gold: #e0a92e; --green: #25d366;
+    --tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%231d4f91' stroke-width='2' opacity='.9'%3E%3Cpath d='M40 6c8 10 8 18 0 26-8-8-8-16 0-26zM40 74c-8-10-8-18 0-26 8 8 8 16 0 26zM6 40c10-8 18-8 26 0-8 8-16 8-26 0zM74 40c-10 8-18 8-26 0 8-8 16-8 26 0z'/%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Cpath d='M0 0h14M0 0v14M80 0h-14M80 0v14M0 80h14M0 80v-14M80 80h-14M80 80v-14'/%3E%3Cpath d='M14 14l8 8M66 14l-8 8M14 66l8-8M66 66l-8-8'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Work Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3.serif { font-family: 'Fraunces', serif; font-weight: 800; line-height: 1.08; letter-spacing: -.5px; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .tiles { background-color: #fff; background-image: var(--tile); background-size: 80px 80px; }
+  .kicker { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+
+  .preview-bar { background: var(--blue-dark); color: #d6e0f0; font-size: .8rem; text-align: center; padding: 8px 16px; }
+  .preview-bar a { color: var(--gold); font-weight: 700; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(251,248,242,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+  .logo { line-height: .95; color: var(--teal); }
+  .logo strong { display: block; font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.7rem; letter-spacing: 1px; }
+  .logo span { display: block; font-weight: 700; font-size: .78rem; letter-spacing: 4.2px; }
+  .nav ul { display: flex; gap: 26px; list-style: none; font-weight: 500; font-size: .95rem; }
+  .nav ul a:hover { color: var(--blue); }
+  .menu-btn { display: none; background: none; border: 0; font-size: 1.7rem; cursor: pointer; color: var(--ink); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: 10px; font-weight: 700; transition: transform .15s, background .15s; border: 0; cursor: pointer; font-family: inherit; font-size: 1rem; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-blue { background: var(--blue); color: #fff; }
+  .btn-blue:hover { background: var(--blue-dark); }
+  .btn-ghost { border: 2px solid var(--blue); color: var(--blue); background: #fff; }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-sm { padding: 10px 18px; font-size: .9rem; }
+
+  .hero { padding: 64px 0 80px; position: relative; }
+  .hero::before { content: ''; position: absolute; inset: 0 0 auto auto; width: 42%; height: 100%; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: clamp(2.8rem, 6.4vw, 4.9rem); color: var(--blue-dark); margin-bottom: 20px; }
+  .hero h1 em { font-style: italic; color: var(--blue); }
+  .hero p { font-size: 1.1rem; color: var(--muted); max-width: 520px; margin-bottom: 30px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-photo { position: relative; padding: 18px; }
+  .hero-photo .frame { position: absolute; inset: 0; border-radius: 24px; }
+  .hero-photo img { position: relative; border-radius: 16px; aspect-ratio: 4/3.4; object-fit: cover; width: 100%; box-shadow: 0 24px 50px rgba(15,47,92,.25); }
+  .hero-photo .badge { position: absolute; left: -10px; bottom: 34px; background: #fff; border-radius: 14px; padding: 14px 18px; box-shadow: 0 12px 30px rgba(15,47,92,.18); }
+  .hero-photo .badge strong { display: block; font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--blue-dark); }
+  .hero-photo .badge span { color: var(--muted); font-size: .88rem; }
+  .status { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; font-size: .92rem; font-weight: 600; background: #fff; border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+  .status::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: #ef4444; }
+  .status.open::before { background: var(--green); }
+
+  section { padding: 96px 0; }
+  .title { text-align: center; margin-bottom: 48px; }
+  .title h2 { font-size: clamp(2.2rem, 4.8vw, 3.3rem); color: var(--blue-dark); }
+  .title p { color: var(--muted); max-width: 580px; margin: 12px auto 0; }
+  /* Sobre o azulejo, o título fica num cartão branco pra não misturar com o desenho */
+  section.tiles .title { display: table; background: #fff; padding: 26px 40px; border-radius: 18px; box-shadow: 0 12px 32px rgba(15,47,92,.12); margin: 0 auto 48px; }
+
+  .today { background: var(--blue-dark); color: #fff; position: relative; overflow: hidden; }
+  .today::after { content: ''; position: absolute; inset: 0; background-image: var(--tile); background-size: 80px; opacity: .08; filter: invert(1); pointer-events: none; }
+  .today .container { position: relative; z-index: 1; }
+  .today .title h2 { color: #fff; }
+  .today .title p { color: #c7d3e8; }
+  .today .kicker { color: var(--gold); }
+  .days { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+  .day { padding: 9px 18px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.35); background: none; color: #fff; font: 600 .9rem 'Work Sans'; cursor: pointer; }
+  .day.active { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .day small { font-weight: 500; opacity: .8; }
+  .today-list { max-width: 760px; margin: 0 auto; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 10px 28px; }
+  .today-list .item { border-color: rgba(255,255,255,.18); }
+  .today-list .item p { color: #c7d3e8; }
+  .today-list .price { color: var(--gold); }
+  .today-note { text-align: center; color: #c7d3e8; font-size: .88rem; margin-top: 18px; }
+
+  .story { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; }
+  .story figure { background: #fff; padding: 14px 14px 10px; border-radius: 8px; box-shadow: 0 18px 40px rgba(15,47,92,.15); transform: rotate(-1.5deg); }
+  .story figure img { border-radius: 4px; width: 100%; }
+  .story figcaption { text-align: center; font-size: .85rem; color: var(--muted); margin-top: 8px; font-style: italic; }
+  .story h2 { font-size: clamp(2.2rem, 4.6vw, 3.2rem); color: var(--blue-dark); margin-bottom: 18px; }
+  .story p { color: var(--muted); margin-bottom: 14px; }
+  .story blockquote { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--blue); border-left: 4px solid var(--gold); padding: 4px 0 4px 18px; margin: 22px 0; }
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+  .timeline div { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  .timeline strong { display: block; font-family: 'Fraunces', serif; color: var(--blue); font-size: 1.25rem; }
+  .timeline span { font-size: .8rem; color: var(--muted); }
+
+  .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .dish { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); transition: transform .2s, box-shadow .2s; }
+  .dish:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(15,47,92,.12); }
+  .dish img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--blue-soft); }
+  .dish .body { padding: 18px 20px 22px; }
+  .dish .head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .dish h3 { font-size: 1.08rem; }
+  .dish .price { color: var(--blue); font-weight: 700; white-space: nowrap; }
+  .dish p { color: var(--muted); font-size: .9rem; margin-top: 6px; }
+  .dish .tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+
+  .menu { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 30px; justify-content: center; flex-wrap: wrap; }
+  .tab { flex: 0 0 auto; padding: 9px 18px; border-radius: 999px; border: 1.5px solid var(--blue); background: none; color: var(--blue); font: 600 .9rem 'Work Sans'; cursor: pointer; }
+  .tab.active { background: var(--blue); color: #fff; }
+  .menu-note { text-align: center; color: var(--muted); font-size: .9rem; margin-bottom: 18px; }
+  .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+  .item { display: flex; justify-content: space-between; gap: 18px; padding: 15px 0; border-bottom: 1px dashed var(--line); }
+  .item h3 { font-size: 1rem; font-weight: 600; }
+  .item p { color: var(--muted); font-size: .87rem; margin-top: 2px; }
+  .price { font-weight: 700; color: var(--blue); white-space: nowrap; text-align: right; }
+  .price small { display: block; font-weight: 500; color: var(--muted); font-size: .78rem; }
+
+  .bar { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .bar-photos { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
+  .bar-photos img { border-radius: 14px; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3/4; }
+  .bar h2 { font-size: clamp(2.2rem, 4.6vw, 3.2rem); color: var(--blue-dark); margin-bottom: 16px; }
+  .bar p { color: var(--muted); margin-bottom: 14px; }
+  .bar ul { list-style: none; margin: 18px 0 26px; }
+  .bar li { padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; }
+  .bar li span:last-child { color: var(--blue); font-weight: 600; }
+
+  .info-wrap { background: var(--blue-soft); }
+  .info { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; }
+  .info h3 { font-family: 'Fraunces', serif; font-size: 1.6rem; color: var(--blue-dark); margin-bottom: 10px; }
+  .info .block { margin-bottom: 28px; }
+  .info p { color: var(--ink); }
+  .hours { list-style: none; max-width: 380px; }
+  .hours li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid #cbd6e8; }
+  .hours li.is-today { color: var(--blue); font-weight: 700; }
+  .delivery { background: #fff; border-left: 4px solid var(--gold); padding: 12px 16px; border-radius: 8px; font-size: .92rem; }
+  .info iframe { width: 100%; height: 100%; min-height: 400px; border: 0; border-radius: 18px; }
+
+  .cta { text-align: center; padding: 90px 0; }
+  .cta h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--blue-dark); margin-bottom: 12px; }
+  .cta p { color: var(--muted); margin-bottom: 28px; }
+  .cta .box { background: #fff; border-radius: 24px; padding: 56px 24px; box-shadow: 0 20px 50px rgba(15,47,92,.12); max-width: 760px; margin: 0 auto; }
+
+  footer { background: var(--blue-dark); color: #b9c6dc; text-align: center; padding: 32px 16px; font-size: .85rem; }
+  footer a { color: var(--gold); font-weight: 700; }
+
+  .whatsapp { position: fixed; right: 20px; bottom: 20px; z-index: 30; width: 60px; height: 60px; border-radius: 50%; background: var(--green); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); transition: transform .15s; }
+  .whatsapp:hover { transform: scale(1.08); }
+  .whatsapp svg { width: 32px; height: 32px; fill: #fff; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    .nav ul { display: none; position: absolute; top: 74px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--cream); border-bottom: 1px solid var(--line); }
+    .nav ul.open { display: flex; }
+    .nav ul a { display: block; padding: 14px 16px; }
+    .nav .btn { display: none; }
+    .hero-grid, .story, .bar, .info { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 40px 0 64px; }
+    .dishes { grid-template-columns: 1fr 1fr; }
+    .menu-list { grid-template-columns: 1fr; }
+    .tabs { justify-content: flex-start; flex-wrap: nowrap; }
+    .timeline { grid-template-columns: 1fr 1fr; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 560px) {
+    .dishes { grid-template-columns: 1fr; }
+    .hero-photo .badge { left: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">Prévia criada para o Dona Felicidade por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>. Este ainda não é o site oficial do restaurante.</div>
+
+<header>
+  <nav class="container nav">
+    <a href="#" class="logo"><strong>DONA</strong><span>FELICIDADE</span></a>
+    <button class="menu-btn" aria-label="Abrir menu">☰</button>
+    <ul>
+      <li><a href="#prato-do-dia">Prato do dia</a></li>
+      <li><a href="#historia">Nossa história</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#bar">Bar</a></li>
+      <li><a href="#contato">Horários</a></li>
+    </ul>
+    <a class="btn btn-blue btn-sm wa-reserva" href="#" target="_blank">Reservar mesa</a>
+  </nav>
+</header>
+
+<section class="hero tiles" style="background-color:var(--cream);background-image:none">
+  <div class="container hero-grid">
+    <div>
+      <span class="kicker">Bar e restaurante português · Vila Romana</span>
+      <h1>Comida de família, <em>desde a mercearia</em> da Pompeia.</h1>
+      <p>Bacalhau ao forno, feijoada completa, sardinha na brasa e carnes Red Angus, feitos com a mesma receita e o mesmo carinho de sempre.</p>
+      <div class="actions">
+        <a class="btn btn-blue wa-reserva" href="#" target="_blank">Reservar pelo WhatsApp</a>
+        <a class="btn btn-ghost" href="#cardapio">Ver cardápio</a>
+      </div>
+      <span class="status" id="status">Horário</span>
+    </div>
+    <div class="hero-photo">
+      <div class="frame tiles"></div>
+      <img src="img/sardinha.jpg" alt="Sardinhas portuguesas assadas na brasa">
+      <div class="badge"><strong>Sardinha portuguesa na brasa</strong><span>Uma das coisas da terrinha · R$ 46</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="prato-do-dia" class="today">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">O prato nosso de cada dia</span>
+      <h2>Hoje tem…</h2>
+      <p>Cada dia da semana tem seu prato. Quarta e sábado é dia de feijoada; sexta, de bacalhau.</p>
+    </div>
+    <div class="days" id="days"></div>
+    <div class="today-list" id="today-list"></div>
+    <p class="today-note" id="today-note"></p>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="container story">
+    <figure>
+      <img src="img/historia-antiga.jpg" alt="Caricatura da família Bastos brindando em frente ao bar" loading="lazy">
+      <figcaption>A família Bastos, em caricatura</figcaption>
+    </figure>
+    <div>
+      <span class="kicker">Nossa história</span>
+      <h2>Tudo começou com dois meninos num navio</h2>
+      <p>Em 1934, Manuel Bastos e Felicidade da Conceição desembarcaram no porto de Santos, ainda crianças e em navios diferentes. Casaram-se em 1945 e, com muito trabalho, Seu Manuel abriu uma mercearia de esquina na Pompeia, com a família morando no andar de cima.</p>
+      <p>Na hora do almoço, Dona Felicidade levava o prato do marido até o balcão. Os clientes começaram a pedir um "pratinho" também, e ela, cansada de subir e descer escada, decidiu:</p>
+      <blockquote>“Mané, acho melhor descer o fogão.”</blockquote>
+      <p>A mercearia virou lanchonete, depois um bar famoso na Avenida Pompeia. Nos anos 90 a família se mudou para a Vila Romana, e o sonho virou o Dona Felicidade Bar & Restaurante, tocado até hoje por ela e pelos filhos Toninho e Serginho.</p>
+      <div class="timeline">
+        <div><strong>1934</strong><span>Chegada ao Brasil</span></div>
+        <div><strong>1945</strong><span>O casamento</span></div>
+        <div><strong>Anos 70</strong><span>A mercearia vira lanchonete</span></div>
+        <div><strong>Anos 90</strong><span>Vila Romana</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tiles" style="background-color:#f4f7fc">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Os mais pedidos</span>
+      <h2>Da terrinha e da brasa</h2>
+      <p>Clássicos portugueses e carnes na brasa que fazem a fama da casa.</p>
+    </div>
+    <div class="dishes" id="dishes"></div>
+  </div>
+</section>
+
+<section id="cardapio" class="menu">
+  <div class="container">
+    <div class="title">
+      <span class="kicker">Cardápio completo</span>
+      <h2>Escolha sem pressa</h2>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <p class="menu-note" id="menu-note"></p>
+    <div class="menu-list" id="menu"></div>
+  </div>
+</section>
+
+<section id="bar">
+  <div class="container bar">
+    <div class="bar-photos">
+      <img src="img/balcao.jpg" alt="Balcão do bar com garrafas" loading="lazy">
+      <img src="img/caipirinhas.jpg" alt="Três caipirinhas de frutas" loading="lazy">
+    </div>
+    <div>
+      <span class="kicker">Nosso bar</span>
+      <h2>Caipirinha bem feita e cerveja gelada</h2>
+      <p>Mais de 30 caipirinhas, de frutas com gengibre a cachaças mineiras especiais, whiskys de 8 a 21 anos, vinho do Porto e uma carta caprichada de destilados.</p>
+      <ul>
+        <li><span>Caipirinha de frutas</span><span>R$ 37</span></li>
+        <li><span>Smirnoff cajú e dedo-de-moça</span><span>R$ 39</span></li>
+        <li><span>Caipirinha Vale Verde</span><span>R$ 52</span></li>
+        <li><span>Aperol Spritz</span><span>R$ 34</span></li>
+        <li><span>Vinho do Porto Adriano R. Pinto</span><span>R$ 34</span></li>
+      </ul>
+      <a class="btn btn-blue" href="#cardapio" onclick="showCategory('Bebidas')">Ver todas as bebidas</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="info-wrap">
+  <div class="container info">
+    <div>
+      <div class="block">
+        <h3>Endereço</h3>
+        <p>Rua Tito, 21<br>Vila Romana, São Paulo, SP</p>
+      </div>
+      <div class="block">
+        <h3>Horários</h3>
+        <ul class="hours" id="hours"></ul>
+      </div>
+      <div class="block">
+        <h3>Reservas e pedidos</h3>
+        <p style="margin-bottom:14px">(11) 3864-3866 · WhatsApp (11) 98389-6941</p>
+        <p class="delivery" style="margin-bottom:18px">🛵 Entregamos na vizinhança aos sábados, domingos e feriados.</p>
+        <a class="btn btn-blue wa-reserva" href="#" target="_blank">Falar no WhatsApp</a>
+      </div>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Rua+Tito,+21+-+Vila+Romana,+S%C3%A3o+Paulo,+05051-000&output=embed" loading="lazy" title="Mapa do Dona Felicidade"></iframe>
+  </div>
+</section>
+
+<section class="cta tiles">
+  <div class="container">
+    <div class="box">
+      <span class="kicker">Venha nos visitar</span>
+      <h2>Tem sempre lugar à mesa</h2>
+      <p>Almoço de família, feijoada de sábado ou bacalhau de sexta. Reserve pelo WhatsApp.</p>
+      <a class="btn btn-blue wa-reserva" href="#" target="_blank">Reservar agora</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Dona Felicidade Bar & Restaurante · Vila Romana, São Paulo<br>
+  Prévia desenvolvida por <a href="https://xmtheus-dev.vercel.app" target="_blank">xmtheus.dev</a>
+</footer>
+
+<a class="whatsapp wa-reserva" href="#" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.7 3.3 15.7c0 2.2.6 4.4 1.7 6.3L3 29l7.2-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.3c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.1 9.9 10 5.1 16 5.1S26.9 10 26.9 16 22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+const WHATSAPP = '5511983896941';
+const waLink = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+document.querySelectorAll('.wa-reserva').forEach(a => a.href = waLink('Olá! Vi o site e gostaria de reservar uma mesa.'));
+
+// Preço: número em reais, ou [1 pessoa, 2 pessoas], ou texto livre.
+const brl = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+const priceHtml = p => Array.isArray(p)
+  ? `${brl(p[0])}<small>2 pessoas: ${brl(p[1])}</small>`
+  : typeof p === 'number' ? brl(p) : p;
+
+const PRATO_DO_DIA = {
+  2: [['Bife à rolê', '2 unidades, com purê e arroz', 56], ['Virado à paulista', '', 72], ['Rabada', 'Com polenta e agrião', 74]],
+  3: [['Feijoada completa', 'Para uma pessoa', 110], ['Feijoada completa', 'Para duas pessoas', 210]],
+  4: [['Nhoque', '', 62], ['Espaguete Barilla', '', 58], ['Espaguete à parisiense', '', 66], ['Espaguete alho e óleo', '', 62], ['Espaguete com brócolis', '', 64], ['Espaguete à primavera', '', 64], ['Talharim ao molho branco', 'Com bife ancho (200 g)', 92]],
+  5: [['Bacalhau ao forno', 'Pequeno, para 1 pessoa', 168], ['Bacalhau à "Seu Mané"', 'Para 1 pessoa', 176], ['Bacalhau ao forno médio', 'Para 2 pessoas', 286], ['Bacalhau ao forno', 'Para 3 pessoas', 398], ['Filé de linguado', 'Com legumes e batata sauté', 72], ['Filé de salmão', 'Com alcaparras e arroz', 82], ['Pescada branca', 'Na brasa ou frita, com dois acompanhamentos', 82]],
+  6: [['Feijoada completa', 'Para uma pessoa', 110], ['Feijoada completa', 'Para duas pessoas', 210]]
+};
+const DIAS = { 2: 'Terça', 3: 'Quarta', 4: 'Quinta', 5: 'Sexta', 6: 'Sábado' };
+
+const DESTAQUES = [
+  { nome: 'Bacalhau à "Seu Mané"', tag: 'Toda sexta', desc: 'A receita que leva o apelido do Seu Manuel. Para uma pessoa.', preco: 176, img: 'bacalhau.jpg' },
+  { nome: 'Tomahawk Red Angus', tag: 'Carnes especiais', desc: '1 kg assado na brasa, marmorizado e suculento, com arroz e farofa.', preco: 298, img: 'tomahawk.jpg' },
+  { nome: 'Alheira à Camões', tag: 'Coisas da terrinha', desc: 'Alheira na brasa, arroz de brócolis, batatas cozidas e ovo frito.', preco: 72, img: 'alheira.jpg' },
+  { nome: 'T-Bone Angus Prime', tag: 'Carnes especiais', desc: '600 g na brasa, com arroz, batata portuguesa e farofa.', preco: 225, img: 'tbone.jpg' },
+  { nome: 'Rabada com polenta', tag: 'Toda terça', desc: 'Com agrião e arroz branco, do jeito de casa.', preco: 74, img: 'rabada.jpg' },
+  { nome: 'Costelinha Tio Arthur', tag: 'Na brasa', desc: 'Costelinha de porco na brasa com mandioca cozida.', preco: 92, img: 'costelinha.jpg' }
+];
+
+const CARDAPIO = {
+  'Trivial & Executivo': { nota: 'De terça a sexta, exceto feriados. Os triviais acompanham arroz, feijão e mais um acompanhamento: fritas, legumes, farofa ou salada.', itens: [
+    ['Trivial de filé mignon', '', 62], ['Trivial de filé de Saint Peter', '', 59], ['Trivial de filé de frango', '', 56], ['Trivial de carne assada', '', 57],
+    ['Parmegianinha', 'Acompanha arroz e fritas', 62],
+    ['½ galetinho na brasa', 'Com arroz de brócolis e polenta frita', 57],
+    ['Filé mignon à milanesa', 'Com salada na cesta de parmesão', 54],
+    ['Talharim de tomate', 'Com molho branco e escalope de filé', 56]
+  ]},
+  'Coisas da terrinha': { itens: [
+    ['Bolinho de bacalhau', 'Unidade', 11], ['Tremoço português', '', 19], ['Alheira', '', 46], ['Sardinha portuguesa na brasa', '', 46],
+    ['Bacaninho', 'Lombo de bacalhau desfiado numa cesta de queijo parmesão', 42],
+    ['Alheira à Camões', 'Alheira, arroz de brócolis, batatas cozidas e um ovo frito', 72]
+  ]},
+  'Porções': { itens: [
+    ['Casquinha de siri', '', 25], ['Rã à dorê', '', 34], ['Lula à dorê', '', 58], ['Bob almôndegas', '', 54], ['Foquinha de camarão', '', 68],
+    ['Linguiça portuguesa na brasa', '', 58], ['Calabresa frita acebolada', '', 44], ['Costelinha de porco', 'Na brasa ou frita', 72],
+    ['Polenta frita', '', 32], ['Mandioca frita', '', 32], ['Galeto a passarinho', '', 49],
+    ['Tulipas de frango', '8 unidades, na brasa', 42], ['Carijó', 'Coxinha da asa na brasa, 6 unidades', 42],
+    ['Pastel misto', '6 unidades', 38], ['Pastel de palmito', '6 unidades', 42],
+    ['Coxinha de frango', 'Unidade', 12], ['Bolinho de carne', 'Unidade', 12], ['Empadinha', 'Unidade, só sexta e sábado', 12],
+    ['Filé mignon aperitivo com alho', 'Com cesta de pães e farofinha', 89], ['Filé mignon aperitivo com cebola', 'Com cesta de pães e farofinha', 88],
+    ['Filé mignon aperitivo com bacon', 'Com cesta de pães e farofinha', 89], ['Filé mignon aperitivo com catupiry', 'Com cesta de pães e farofinha', 93],
+    ['Filé mignon aperitivo com alho, cebola e bacon', 'Com cesta de pães e farofinha', 98]
+  ]},
+  'Carnes na brasa': { nota: 'Picanhas acompanham arroz, farofa e molhinho vinagrete. Preço para 1 pessoa, com o valor para 2 embaixo.', itens: [
+    ['Prime Rib Angus Prime', '500 g, com arroz, farofa e vinagrete', 220],
+    ['T-Bone Steak Angus Prime', '600 g, com arroz, batata portuguesa e farofa', 225],
+    ['Tomahawk Red Angus', '1 kg, com arroz e farofa', 298],
+    ['Picanha', '', [125, 244]], ['Picanha com alho', '', [130, 257]], ['Picanha com cebola', '', [130, 257]], ['Picanha com bacon', '', [130, 257]],
+    ['Picanha com alho e cebola', '', [139, 264]], ['Picanha com bacon e alho', '', [139, 264]], ['Picanha com tudo', '', [147, 269]],
+    ['Espeto misto', 'Picanha, frango, linguiça, cebola e tomate, com arroz e farofa', 198],
+    ['Carré de cordeiro', '400 g, com molhinho de hortelã, arroz, farofa e batata portuguesa', 162],
+    ['Costelinha de porco Tio Arthur', 'Na brasa, com mandioca cozida', 92],
+    ['Vejinha', 'Bife ancho de 400 g, com arroz, feijão e batata frita', 189],
+    ['Bife ancho com talharim', '200 g, com talharim ao molho branco', 92],
+    ['Biro-biro com bife ancho', '400 g', 162],
+    ['Galeto na brasa', 'Com farofa e arroz, ou com legumes e arroz', 105]
+  ]},
+  'Filé mignon': { itens: [
+    ['Filé à milanesa', 'Com arroz e purê', 188], ['Filé com alho', 'Com arroz e farofa', 192], ['Filé com catupiry', 'Com arroz de brócolis', 192],
+    ['Filé à parmegiana', 'Com arroz e fritas', 192], ['Filé com arroz e fritas', 'Ou com legumes', 185]
+  ]},
+  'Bacalhau e peixes': { nota: 'Pescada cambucu, robalo e atum: consulte, pois nem todo dia o mar está pra peixe.', itens: [
+    ['Bacalhau ao forno pequeno', 'Para 1 pessoa', 168], ['Bacalhau à "Seu Mané"', 'Para 1 pessoa', 176],
+    ['Bacalhau ao forno médio', 'Para 2 pessoas', 286], ['Bacalhau ao forno', 'Para 3 pessoas', 398],
+    ['Pescada branca', 'Frita ou na brasa, com purê e arroz à grega', 82],
+    ['Filé de linguado à dorê', 'Com alcaparras, legumes e arroz', 75],
+    ['Filé de linguado grelhado', 'Com alcaparras, batata sauté e arroz', 72],
+    ['Salmão com alcaparras', 'Com arroz e legumes', 82]
+  ]},
+  'Saladas e guarnições': { itens: [
+    ['Salada do Didi', 'Feita numa fina crosta de queijo parmesão', 78],
+    ['Salada mista', 'Pequena, média ou grande', 'R$ 28 · 34 · 47'], ['Salada completa', 'Pequena, média ou grande', 'R$ 44 · 52 · 58'], ['Salada de palmito', 'Pequena, média ou grande', 'R$ 48 · 62 · 72'],
+    ['Arroz', '', 16], ['Arroz à grega', '', 22], ['Arroz com brócolis', '', 22], ['Arroz biro-biro', '', 26], ['Feijão', '', 18], ['Farofa', '', 14],
+    ['Batata frita', '', 32], ['Batata sauté', '', 32], ['Purê de batata', '', 32], ['Legumes', '', 28], ['Ovo frito', '', 4.5]
+  ]},
+  'Kids': { itens: [
+    ['Pratinho kids', 'Arroz, feijão, filezinho em tiras e batata sorriso', 46],
+    ['Espaguete kids', 'Ao sugo ou na manteiga, com filezinho em tiras', 39.9]
+  ]},
+  'Bebidas': { nota: 'Uma seleção da carta. Temos também whiskys de 8 a 21 anos, runs, gins, licores e amargos.', itens: [
+    ['Caipirinha de frutas', '', 37], ['Caipirinha de aguardente', 'Comum ou especial', 'R$ 32 · 39'],
+    ['Caipirinha Smirnoff', '', 34], ['Smirnoff de frutas vermelhas', '', 37], ['Smirnoff cajú e dedo-de-moça', '', 39], ['Smirnoff frutas com gengibre', '', 39],
+    ['Caipirinha Absolut', '', 41], ['Caipirinha Stolichnaya', '', 44], ['Caipirinha Ciroc ou Belvedere', '', 62], ['Caipirinha Grey Goose', 'Limão', 67],
+    ['Caipirinha de saquê', '', 34], ['Saquê de frutas com gengibre', '', 37], ['Caipirinha de gin', 'Nacional ou importado', 'R$ 34 · 41'],
+    ['Cachaças mineiras especiais', 'Espírito de Minas, Boazinha, Meia Lua, Três Coronéis, Lua Cheia, Vale Verde…', 'R$ 37 a 52'],
+    ['Aperol Spritz', '', 34], ['Vinho do Porto Adriano R. Pinto', '', 34], ['Rum Havana 7 anos', '', 34], ['Zacapa Solera', '', 85],
+    ['Refrigerante', '', 9], ['Suco de laranja', '', 16.5], ['Água mineral', '', 6], ['Café expresso', '', 9], ['Café português', 'Aromatiq / Delta', 10]
+  ]}
+};
+
+// Destaques
+document.getElementById('dishes').innerHTML = DESTAQUES.map(d => `
+  <article class="dish">
+    <img src="img/${d.img}" alt="${d.nome}" loading="lazy">
+    <div class="body">
+      <span class="tag">${d.tag}</span>
+      <div class="head"><h3>${d.nome}</h3><span class="price">${brl(d.preco)}</span></div>
+      <p>${d.desc}</p>
+    </div>
+  </article>`).join('');
+
+const itemHtml = ([nome, desc, preco]) => `
+  <div class="item">
+    <div><h3>${nome}</h3>${desc ? `<p>${desc}</p>` : ''}</div>
+    <span class="price">${priceHtml(preco)}</span>
+  </div>`;
+
+// Cardápio com abas
+const tabs = document.getElementById('tabs');
+function showCategory(cat) {
+  tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+  document.getElementById('menu-note').textContent = CARDAPIO[cat].nota || '';
+  document.getElementById('menu').innerHTML = CARDAPIO[cat].itens.map(itemHtml).join('');
+}
+tabs.innerHTML = Object.keys(CARDAPIO).map(c => `<button class="tab" data-cat="${c}">${c}</button>`).join('');
+tabs.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showCategory(t.dataset.cat)));
+showCategory('Coisas da terrinha');
+
+// Prato do dia: abre no dia de hoje, ou no próximo dia que tiver prato
+const now = new Date();
+const today = now.getDay();
+const nextServiceDay = [0, 1].includes(today) ? 2 : today;
+const days = document.getElementById('days');
+function showDay(d) {
+  days.querySelectorAll('.day').forEach(b => b.classList.toggle('active', Number(b.dataset.d) === d));
+  document.getElementById('today-list').innerHTML = PRATO_DO_DIA[d].map(itemHtml).join('');
+  const note = document.getElementById('today-note');
+  note.textContent = d === today ? 'Esses são os pratos de hoje.'
+    : [0, 1].includes(today) && d === 2 ? 'Domingo e segunda não têm prato do dia. Estes são os de terça.' : '';
+}
+days.innerHTML = Object.entries(DIAS).map(([d, nome]) =>
+  `<button class="day" data-d="${d}">${nome}${Number(d) === today ? ' <small>· hoje</small>' : ''}</button>`).join('');
+days.querySelectorAll('.day').forEach(b => b.addEventListener('click', () => showDay(Number(b.dataset.d))));
+showDay(nextServiceDay);
+
+// Horários e aviso de aberto/fechado (minutos desde a meia-noite)
+const HORARIOS = [
+  [1, 'Segunda', null, null], [2, 'Terça', 720, 1320], [3, 'Quarta', 720, 1320], [4, 'Quinta', 720, 1320],
+  [5, 'Sexta', 720, 1350], [6, 'Sábado', 720, 1020], [0, 'Domingo', 720, 1020]
+];
+const fmt = m => `${Math.floor(m / 60)}h${m % 60 ? String(m % 60).padStart(2, '0') : ''}`;
+const minutes = now.getHours() * 60 + now.getMinutes();
+const hoursOf = d => HORARIOS.find(h => h[0] === d);
+document.getElementById('hours').innerHTML = HORARIOS.map(([d, dia, a, f]) =>
+  `<li class="${d === today ? 'is-today' : ''}"><span>${dia}</span><span>${a === null ? 'Fechado' : `${fmt(a)} às ${fmt(f)}`}</span></li>`).join('');
+const [, , abre, fecha] = hoursOf(today);
+const status = document.getElementById('status');
+if (abre !== null && minutes >= abre && minutes < fecha) {
+  status.textContent = `Aberto agora · fecha às ${fmt(fecha)}`;
+  status.classList.add('open');
+} else {
+  let next;
+  if (abre !== null && minutes < abre) next = `abre hoje às ${fmt(abre)}`;
+  else for (let i = 1; i <= 7; i++) {
+    const [, dia, a] = hoursOf((today + i) % 7);
+    if (a !== null) { next = `abre ${i === 1 ? 'amanhã' : dia.toLowerCase()} às ${fmt(a)}`; break; }
+  }
+  status.textContent = `Fechado agora · ${next}`;
+}
+
+const menuBtn = document.querySelector('.menu-btn');
+const navList = document.querySelector('.nav ul');
+menuBtn.addEventListener('click', () => navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+</script>
+</body>
+</html>
